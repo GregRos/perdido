@@ -10,7 +10,10 @@ apt-get install -y \
 echo Starting file execution
 for file in ./setup.d/*.bash; do
   # guaranteed to be alphabetical, which is why we do the above...
-  bash "$file"
+  if ! bash "$file"; do
+    echo Error executing $file
+    exit 3
+  done
 done
 
 echo --- ALL DONE ---

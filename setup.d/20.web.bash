@@ -5,7 +5,7 @@ echo --- SETTING UP WEB REVERSE PROXY ---
 exec > >(trap "" INT TERM; sed 's/^/[WEB] /')
 exec 2> >(trap "" INT TERM; sed 's/^/[WEB ERR] /' >&2)
 
-apt-get install -y certbot nginx python-certbot-nginx
+apt-get install -y certbot nginx python3-certbot-nginx
 
 if ! curl localhost; then
   >&2 echo nginx seems to be broken
