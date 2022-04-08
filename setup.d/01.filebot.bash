@@ -19,7 +19,7 @@ echo PRINT FILEBOT VERSION
 filebot -version
 
 echo DECRYPT AND APPLY LICENSE
-gpg --decrypt filebot-lic.psm.gpg --output filebot-lic.psm
+gpg --output filebot-lic.psm --decrypt filebot-lic.psm.gpg
 filebot --license filebot-lic.psm
 
 echo FILEBOT SYSINFO
