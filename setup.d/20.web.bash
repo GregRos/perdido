@@ -15,5 +15,6 @@ sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
 cp ./config/nginx/*.conf /etc/nginx/conf.d/
 
 unlink /etc/nginx/sites-enabled/default
-
-
+nginx -t && nginx -s reload
+mkdir -p /etc/cron.d
+cp config/renew.cronjob /etc/cron.d/
