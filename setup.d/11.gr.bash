@@ -13,7 +13,7 @@ cat data/gr.pub >> $SSH/authorized_keys
 chown -R gr:gr $SSH
 
 echo SETTING UP FISH SHELL
-chsh -u gr -s /usr/bin/fish
+usermod --shell /usr/bin/fish gr
 sudo -u gr -c 'fish gr.fish'
 
 echo --- DONE ---
