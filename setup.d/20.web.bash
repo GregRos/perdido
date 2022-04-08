@@ -12,7 +12,7 @@ if ! curl localhost; then
 fi
 
 sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
-cp ./config/nginx/* /etc/nginx/conf.d/
+cp ./config/nginx/*.conf /etc/nginx/conf.d/
 
 unlink /etc/nginx/sites-enabled/default
 
