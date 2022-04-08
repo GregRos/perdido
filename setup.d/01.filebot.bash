@@ -10,20 +10,20 @@ apt-get install --install-recommends dirmngr
 apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
 echo "deb [arch=all] https://get.filebot.net/deb/ universal main" | sudo tee /etc/apt/sources.list.d/filebot.list
 
-print INSTALL PACKAGES
+echo INSTALL PACKAGES
 apt-get update
 apt-get install -y default-jre mediainfo p7zip-full unrar
 apt-get install -y filebot
 
-print PRINT FILEBOT VERSION
+echo PRINT FILEBOT VERSION
 filebot -version
 
-print DECRYPT AND APPLY LICENSE
+echo DECRYPT AND APPLY LICENSE
 gpg --decrypt filebot-lic.psm.gpg --output filebot-lic.psm
 filebot --license filebot-lic.psm
 
-print FILEBOT SYSINFO
+echo FILEBOT SYSINFO
 filebot -script fn:sysinfo
 
-print --- DONE ---
+echo --- DONE ---
 
