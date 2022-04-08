@@ -14,6 +14,6 @@ chown -R gr:gr $SSH
 
 echo SETTING UP FISH SHELL
 usermod --shell /usr/bin/fish gr
-sudo -u gr fish gr.fish
+sudo -u gr fish setup.d/gr.fish
 
 echo --- DONE ---
