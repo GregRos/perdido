@@ -22,7 +22,7 @@ gpasswd -M gr,an $torrenting_group
 gpasswd -M nginx,rtorrent,gr,an $rpc_group
 
 echo ADDING TO SUDOERS
-"
+echo "
 # Anna & Greg Definitions
 
 gr ALL=(ALL) NOPASSWD: ALL
