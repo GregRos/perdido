@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 echo --- TORRENTS --
 exec > >(trap "" INT TERM; sed 's/^/[TORRENTS] /')

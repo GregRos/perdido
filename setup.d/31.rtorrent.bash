@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 echo --- RTORRENT ---
 exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -ex
 echo --- FILEBOT ---
 
 exec > >(trap "" INT TERM; sed 's/^/[FILEBOT] /')

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 echo --- USER STRUCTURE ---
 exec > >(trap "" INT TERM; sed 's/^/[USERS] /')
@@ -11,18 +12,13 @@ groupadd $torrenting_group
 groupadd $rpc_group
 
 echo CREATING USERS
-useradd -m gr
-useradd -m an
-useradd -m nginx
+for user in gr an nginx flood arr; do
+  useradd -m $user
+done
 useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
-for user in gr an; do
-    usermod -a -G $torrenting_group "$user"
-    usermod -a -G "$rpc_group" "$user"
-done
-for user in nginx rtorrent; do
-  usermod -a -G "$rpc_group" "$user"
-done
+gpasswd -M gr,an $torrenting_group
+gpasswd -M nginx,rtorrent,gr,an $rpc_group
 
 echo ADDING TO SUDOERS
 "
@@ -33,4 +29,4 @@ an ALL=(ALL) NOPASSWD: ALL
 
 " > /etc/sudoers.d/angr
 
-echo --- DONE --
+echo --- DONE ---

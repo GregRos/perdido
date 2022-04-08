@@ -1,4 +1,5 @@
 ## Setup SSH keys for gr
+set -ex
 
 echo --- SETTING UP GR ---
 exec > >(trap "" INT TERM; sed 's/^/[USER GR] /')

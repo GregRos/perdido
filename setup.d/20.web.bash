@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ex
 
 echo --- SETTING UP WEB REVERSE PROXY ---
 exec > >(trap "" INT TERM; sed 's/^/[WEB] /')
