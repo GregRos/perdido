@@ -24,8 +24,8 @@ cp ./config/rtorrent.service "$service_path"
 chmod 700 "$service_path"
 
 echo CONFIGURING AND LAUNCHING SERVICE
-systemd start rtorrent.service
-systemd status rtorrent.service
-systemd enable rtorrent.service
+systemctl start rtorrent.service
+systemctl status rtorrent.service
+systemctl enable rtorrent.service
 
 

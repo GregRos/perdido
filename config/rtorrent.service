@@ -7,8 +7,8 @@ Type=simple
 User=rtorrent
 Group=torrenting
 # Modify the next 2 lines to use absolute paths
-ExecStartPre=-/bin/rm -f /home/rtorrent/.session/rtorrent.lock
-ExecStart=/usr/bin/rtorrent -o import=/home/rtorrent/rtorrent.rc
+ExecStartPre=-/bin/rm -f /var/rtorrent/session/rtorrent.lock
+ExecStart=/usr/bin/rtorrent -o import=/etc/rtorrent/rtorrent.rc
 Restart=on-failure
 RestartSec=3
 
