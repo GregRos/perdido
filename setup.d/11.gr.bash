@@ -9,7 +9,7 @@ echo SETTING UP SSH KEYS
 SSH=/home/gr/.ssh
 mkdir -p $SSH/authorized_keys.d
 chmod 0700 $SSH
-cp data/gr.pub $SSH/authorized_keys.d/
+cp -f data/gr.pub $SSH/authorized_keys.d/
 cat $SSH/authorized_keys.d/* > /home/gr/.ssh/authorized_keys
 chown -R gr:gr $SSH
 

@@ -10,7 +10,7 @@ apt-get install -y rtorrent
 
 echo COPYING RTORRENTRC
 mkdir -p /etc/rtorrent
-cp ./config/rtorrent.rc /etc/rtorrent/rtorrent.rc
+cp -f ./config/rtorrent.rc /etc/rtorrent/rtorrent.rc
 chown -R rtorrent:torrenting /etc/rtorrent
 
 echo CREATING SOME FOLDERS
@@ -19,7 +19,7 @@ chown -R rtorrent:torrenting /var/rtorrent
 
 echo COPYING SERVICE FILE
 service_path=/etc/systemd/system/rtorrent.service
-cp ./config/rtorrent.service "$service_path"
+cp -f ./config/rtorrent.service "$service_path"
 # Restrict permissions to root
 chmod 700 "$service_path"
 
