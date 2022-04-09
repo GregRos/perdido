@@ -4,8 +4,8 @@
 
 ## Instance layout (base paths)
 method.insert = cfg.basedir,  private|const|string, (cat,"/etc/rtorrent/")
-method.insert = cfg.download, private|const|string, (cat,"/data/downs/going")
-method.insert = cfg.logs,     private|const|string, (cat,"/var/rtorrent/logs")
+method.insert = cfg.download, private|const|string, (cat,"/data/downs/going/")
+method.insert = cfg.logs,     private|const|string, (cat,"/var/rtorrent/logs/")
 method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),"rtorrent-",(system.time),".log")
 method.insert = cfg.session,  private|const|string, (cat,"/var/rtorrent/session/")
 
@@ -21,7 +21,7 @@ network.port_range.set = 45000-60000
 network.port_random.set = yes
 
 ## Changed for public trackers
-dht.mode.set = yes
+dht.mode.set = auto
 protocol.pex.set = yes
 trackers.use_udp.set = yes
 
