@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-set -ex
 
 echo --- USER STRUCTURE ---
 exec > >(trap "" INT TERM; sed 's/^/[USERS] /')
-exec 2> >(trap "" INT TERM; sed 's/^/[USERS] /' >&2)
+set -ex
 
+echo CREATING GROUPS
 torrenting_group=torrenting
 rpc_group=rpcing
-echo ADDING GROUP
 for group in $torrenting_group $rpc_group; do
   getent group $group || groupadd $group
 done

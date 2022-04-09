@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-set -ex
 
 echo --- RTORRENT ---
 exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')
-exec 2> >(trap "" INT TERM; sed 's/^/[RTORRENT ERR] /' >&2)
+set -ex
 
 echo INSTALLING RTORRENT
 apt-get install -y rtorrent
@@ -24,9 +23,14 @@ cp -f ./config/rtorrent.service "$service_path"
 chmod 700 "$service_path"
 
 echo CONFIGURING AND LAUNCHING SERVICE
+systemctl stop rtorrent.service || true
 systemctl daemon-reload
 systemctl start rtorrent.service
-systemctl status rtorrent.service
-systemctl enable rtorrent.service
 
+echo WAITING TO CHECK RTORRENT SERVICE...
+sleep 5
+if ! systemctl status rtorrent.service; then
+  echo FAILED TO START
+  exit 3
+fi
 

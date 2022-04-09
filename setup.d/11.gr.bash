@@ -1,11 +1,10 @@
 ## Setup SSH keys for gr
+echo --- SETTING UP GR ---
+
+exec > >(trap "" INT TERM; sed 's/^/[USER GR] /')
 set -ex
 
-echo --- SETTING UP GR ---
-exec > >(trap "" INT TERM; sed 's/^/[USER GR] /')
-exec 2> >(trap "" INT TERM; sed 's/^/[USER GR] /' >&2)
-
-echo SETTING UP SSH KEYS
+echo SETTING UP SSH
 SSH=/home/gr/.ssh
 mkdir -p $SSH/authorized_keys.d
 chmod 0700 $SSH

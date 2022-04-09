@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-set -ex
 echo --- FILEBOT ---
-
 exec > >(trap "" INT TERM; sed 's/^/[FILEBOT] /')
-exec 2> >(trap "" INT TERM; sed 's/^/[FILEBOT ERR] /' >&2)
+set -ex
 
 echo SETTING UP KEYS AND STUFF
 apt-get install --install-recommends dirmngr
