@@ -14,7 +14,7 @@ cp ./config/rtorrent.rc /etc/rtorrent/rtorrent.rc
 chown -R rtorrent:torrenting /etc/rtorrent
 
 echo CREATING SOME FOLDERS
-mkdir -p /var/rtorrent/{log,session}
+mkdir -p /var/rtorrent/{logs,session}
 chown -R rtorrent:torrenting /var/rtorrent
 
 echo COPYING SERVICE FILE
