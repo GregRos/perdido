@@ -7,6 +7,7 @@ apt-get install -y certbot nginx python3-certbot-nginx
 
 if ! curl localhost; then
   >&2 echo nginx seems to be broken
+  exit 3
 fi
 
 sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
