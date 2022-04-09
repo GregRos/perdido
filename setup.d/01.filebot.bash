@@ -17,8 +17,12 @@ echo PRINT FILEBOT VERSION
 filebot -version
 
 echo DECRYPT AND APPLY LICENSE
-gpg --output filebot-lic.psm --decrypt ./data/filebot-lic.psm.gpg
-filebot --license filebot-lic.psm
+read -p "Activate filebot now?" -n 1 -r
+echo
+if [[ "$REPLY" =~ [Yy] ]]; then
+  gpg --output filebot-lic.psm --decrypt ./data/filebot-lic.psm.gpg
+  filebot --license filebot-lic.psm
+fi
 
 echo FILEBOT SYSINFO
 filebot -script fn:sysinfo

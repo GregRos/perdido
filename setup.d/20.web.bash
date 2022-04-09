@@ -11,8 +11,18 @@ if ! curl localhost; then
 fi
 
 echo CREATING PASSWORD FILE
-rm /etc/nginx/htpasswd
-htpasswd -c -B /etc/nginx/htpasswd gr
+if test -f /etc/nginx/htpasswd; then
+  read -p "Password file exists. Leave or recreate?" -n 1 -r
+  echo
+  if [[ "$REPLY" =~ [Yy] ]]; then
+      rm /etc/nginx/htpasswd
+      htpasswd -c -B /etc/nginx/htpasswd gr
+  fi
+fi
+
+
+echo SETTING UP NGINX STATIC CONTENT
+mkdir -p /var/www/
 
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
