@@ -24,11 +24,12 @@ if test -f $local_nginx/htpasswd; then
 fi
 
 echo SETTING UP PERMISSIONS
+chown -R nginx:nginx "$local_www"
 
-echo COPYING STATIC CONTENT
+echo LINKING STATIC CONTENT
 rm -rf ${local_www:?} || true
 ln -s "$my_nginx"/www $local_www
-chown -R nginx:nginx "$local_www"
+
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
 rm -rf "${local_nginx:?}"/{fragments,conf.d}
@@ -37,12 +38,12 @@ ln -s "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -s $my_nginx/fragments/*.conf $local_nginx/fragments/
 
 
-echo GENERATING CERTIFICATE
+echo REGENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
 certbot certonly --nginx -d perdido.bond
 
-echo RELOADING
+echo RELOADING NGINX
 nginx -t && nginx -s reload
 
 echo ADDING CERTIFICATE RENEW CRONJOB
