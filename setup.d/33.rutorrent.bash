@@ -5,7 +5,7 @@ exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')
 set -ex
 
 mkdir -p /var/rutorrent/profiles
-chown -R nginx:nginx /var/rutorrent
+chown -R nginx:torrenting /var/rutorrent
 www_rutorent=/var/www/perdido.bond/rutorrent
 rm -rf $www_rutorent
 git clone https://github.com/Novik/ruTorrent.git $www_rutorent
