@@ -7,6 +7,7 @@ apt-get install -y certbot nginx python3-certbot-nginx apache2-utils
 my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
+unlink $local_nginx/sites-enabled/default || true
 if ! curl localhost; then
   >&2 echo nginx seems to be broken
   exit 3
@@ -23,7 +24,7 @@ if test -f $local_nginx/htpasswd; then
 fi
 
 echo LINKING STATIC CONTENT
-rm -rf ${local_www:?}/ || true
+rm -rf ${local_www:?} || true
 mkdir -p $local_www
 ln -s "$my_nginx"/www $local_www
 
@@ -41,7 +42,6 @@ echo GENERATING CERTIFICATE
 certbot certonly --nginx -d perdido.bond
 
 echo RELOADING
-unlink $local_nginx/sites-enabled/default || true
 nginx -t && nginx -s reload
 
 echo ADDING CERTIFICATE RENEW CRONJOB
