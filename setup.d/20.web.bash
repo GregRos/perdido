@@ -24,11 +24,13 @@ if test -f $local_nginx/htpasswd; then
 fi
 
 echo SETTING UP PERMISSIONS
-chown -R nginx:nginx "$local_www"
 
 echo LINKING STATIC CONTENT
 rm -rf ${local_www:?} || true
-ln -s "$my_nginx"/www $local_www
+mkdir -p $local_www
+cp -rf $my_nginx/www/* $local_www
+chown -R nginx:nginx "$local_www"
+
 
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
