@@ -25,7 +25,6 @@ fi
 
 echo LINKING STATIC CONTENT
 rm -rf ${local_www:?} || true
-mkdir -p $local_www
 ln -s "$my_nginx"/www $local_www
 
 echo SETTING UP NGINX CONFIG
