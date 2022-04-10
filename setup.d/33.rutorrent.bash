@@ -11,7 +11,7 @@ cd /var/www/perdido.bond
 rm -rf rutorrent
 git clone https://github.com/Novik/ruTorrent.git rutorrent
 
-chown -R flood:flood rutorrent/
+chown -R nginx:nginx rutorrent/
 chmod -R 770 rutorrent/
 
 echo --- DONE ---
