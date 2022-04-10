@@ -38,7 +38,7 @@ ln -s $my_nginx/fragments/*.conf $local_nginx/fragments/
 echo GENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
-certbot --nginx -d perdido.bond
+certbot certonly --nginx -d perdido.bond
 
 echo RELOADING
 unlink $local_nginx/sites-enabled/default || true
