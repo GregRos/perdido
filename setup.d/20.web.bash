@@ -27,10 +27,8 @@ echo SETTING UP PERMISSIONS
 
 echo COPYING STATIC CONTENT
 rm -rf ${local_www:?} || true
-mkdir -p $local_www
-ln -s "$my_nginx"/www/* $local_www
+ln -s "$my_nginx"/www $local_www
 chown -R nginx:nginx "$local_www"
-
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
 rm -rf "${local_nginx:?}"/{fragments,conf.d}
