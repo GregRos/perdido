@@ -17,7 +17,7 @@ for user in gr an nginx flood arr; do
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
-gpasswd -M gr,an $torrenting_group
+gpasswd -M gr,an,flood $torrenting_group
 gpasswd -M nginx,rtorrent,gr,an,flood $rpc_group
 
 echo ADDING TO SUDOERS
