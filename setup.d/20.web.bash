@@ -28,7 +28,7 @@ ln -s "$my_nginx"/www $local_www
 
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
-rm -rf "${my_nginx:?}"/{fragments,conf.d}
+rm -rf "${local_nginx:?}"/{fragments,conf.d}
 mkdir -p "$my_nginx"/{fragments,conf.d}
 ln -s "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -s "$my_nginx"/fragments/*.conf $local_nginx/fragments/
