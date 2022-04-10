@@ -29,8 +29,11 @@ sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
 rm -rf /etc/nginx/conf.d/
 mkdir -p /etc/nginx/conf.d
 cp -f ./config/nginx/*.conf /etc/nginx/conf.d/
+rm /var/www/html/*
+cp ./config/nginx/www/* /var/www/
 
 echo GENERATING CERTIFICATE
+# Puts certificate in /etc/letsencrypt/live
 certbot --nginx -d perdido.bond
 
 echo RELOADING
