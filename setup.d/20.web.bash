@@ -46,4 +46,4 @@ nginx -t && nginx -s reload
 
 echo ADDING CERTIFICATE RENEW CRONJOB
 mkdir -p /etc/cron.d
-ln -s "$my_nginx"/renew.cronjob /etc/cron.d
+ln -sf "$my_nginx"/renew.cronjob /etc/cron.d
