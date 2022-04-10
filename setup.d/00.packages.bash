@@ -12,4 +12,4 @@ apt-get install -y \
   libcurl4-gnutls-dev pkg-config nodejs default-jre mediainfo \
   p7zip-full unrar dirmngr rtorrent
 
-apt-get --no-install-recommends filebot
+apt-get --no-install-recommends install filebot
