@@ -12,7 +12,7 @@ rm -rf rutorrent
 git clone https://github.com/Novik/ruTorrent.git rutorrent
 
 chown -R nginx:nginx rutorrent/
-chmod -R 770 rutorrent/
+chmod -R 777 rutorrent/
 
 echo --- DONE ---
 
