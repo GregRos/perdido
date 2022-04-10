@@ -27,10 +27,11 @@ mkdir -p /var/www/
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' /etc/nginx/nginx.conf
 rm -rf /etc/nginx/conf.d/
-mkdir -p /etc/nginx/conf.d
-cp -f ./config/nginx/*.conf /etc/nginx/conf.d/
-rm /var/www/html/*
-cp ./config/nginx/www/* /var/www/
+mkdir -p /etc/nginx/{conf.d,fragments}
+cp -f ./config/nginx/conf/*.conf /etc/nginx/conf.d/
+cp -f ./config/nginx/fragments/*.conf /etc/nginx/fragments/
+rm -rf /var/www/perdido.bond/ || true
+cp ./config/nginx/www/* /var/www/perdido.bond/
 
 echo GENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
