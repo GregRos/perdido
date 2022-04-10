@@ -23,6 +23,7 @@ if test -f $local_nginx/htpasswd; then
 fi
 
 echo LINKING STATIC CONTENT
+rm -rf ${local_www:?}/ || true
 mkdir -p $local_www
 ln -s "$my_nginx"/www $local_www
 
@@ -32,7 +33,6 @@ rm -rf "${local_nginx:?}"/{fragments,conf.d}
 mkdir -p "$my_nginx"/{fragments,conf.d}
 ln -s "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -s "$my_nginx"/fragments/*.conf $local_nginx/fragments/
-rm -rf ${local_www:?}/ || true
 
 
 echo GENERATING CERTIFICATE
