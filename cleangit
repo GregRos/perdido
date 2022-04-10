@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo GETTING VIA GIT...
+git reset --hard HEAD
+git clean -f
+git pull --rebase
