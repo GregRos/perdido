@@ -4,9 +4,6 @@ echo --- RTORRENT ---
 exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')
 set -ex
 
-echo INSTALLING RTORRENT
-apt-get install -y rtorrent
-
 echo COPYING RTORRENTRC
 mkdir -p /etc/rtorrent
 cp -f ./config/rtorrent.rc /etc/rtorrent/rtorrent.rc
@@ -16,9 +13,10 @@ echo CREATING SOME FOLDERS
 mkdir -p /var/rtorrent/{logs,session}
 chown -R rtorrent:torrenting /var/rtorrent
 
-echo COPYING SERVICE FILE
+echo LINKING SERVICE FILE
 service_path=/etc/systemd/system/rtorrent.service
-cp -f ./config/rtorrent.service "$service_path"
+
+ln -sf "$(realpath ./config/rtorrent.service)" "$service_path"
 # Restrict permissions to root
 chmod 700 "$service_path"
 
@@ -33,4 +31,4 @@ if ! systemctl status rtorrent.service; then
   echo FAILED TO START
   exit 3
 fi
-
+systemctl enable rtorrent.service
