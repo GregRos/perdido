@@ -11,6 +11,6 @@ apt-get install -y \
   iperf3 fish certbot speedtest-cli gcc make g++ automake \
   libcurl4-gnutls-dev pkg-config nodejs default-jre mediainfo \
   p7zip-full unrar dirmngr rtorrent \
-  php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring \
+  php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring php7.4-fpm \
   ffmpeg sqlite3
 apt-get --no-install-recommends install filebot
