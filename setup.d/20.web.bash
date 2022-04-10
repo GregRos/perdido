@@ -23,6 +23,9 @@ if test -f $local_nginx/htpasswd; then
   fi
 fi
 
+echo SETTING UP PERMISSIONS
+chown -R nginx:nginx "$my_nginx"
+
 echo LINKING STATIC CONTENT
 rm -rf ${local_www:?} || true
 ln -s "$my_nginx"/www $local_www
