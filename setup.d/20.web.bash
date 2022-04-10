@@ -26,9 +26,10 @@ fi
 echo SETTING UP PERMISSIONS
 chown -R nginx:nginx "$my_nginx"
 
-echo LINKING STATIC CONTENT
+echo COPYING STATIC CONTENT
 rm -rf ${local_www:?} || true
-ln -s "$my_nginx"/www $local_www
+mkdir -p $local_www
+ln -s "$my_nginx"/www/* $local_www
 
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
