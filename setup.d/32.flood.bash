@@ -22,7 +22,7 @@ systemctl start flood.service
 
 echo WAITING TO CHECK FLOOD SERVICE...
 sleep 5
-if ! systemctl status rtorrent.service; then
+if ! systemctl status flood.service && ! curl -L http://localhost:9001; then
   echo FAILED TO START
   exit 3
 fi
