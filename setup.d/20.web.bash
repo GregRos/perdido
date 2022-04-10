@@ -31,6 +31,7 @@ mkdir -p /etc/nginx/{conf.d,fragments}
 cp -f ./config/nginx/conf/*.conf /etc/nginx/conf.d/
 cp -f ./config/nginx/fragments/*.conf /etc/nginx/fragments/
 rm -rf /var/www/perdido.bond/ || true
+mkdir -p /var/www/perdido.bond
 cp ./config/nginx/www/* /var/www/perdido.bond/
 
 echo GENERATING CERTIFICATE
