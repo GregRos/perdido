@@ -36,6 +36,7 @@ cp ./config/nginx/www/* /var/www/perdido.bond/
 
 echo GENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
+# can be skipped if cert is okay
 certbot --nginx -d perdido.bond
 
 echo RELOADING
