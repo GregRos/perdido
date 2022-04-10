@@ -32,7 +32,7 @@ sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
 rm -rf "${local_nginx:?}"/{fragments,conf.d}
 mkdir -p "$local_nginx"/{fragments,conf.d}
 ln -s "$my_nginx"/conf/*.conf $local_nginx/conf.d/
-ln -s "$my_nginx"/fragments/*.conf $local_nginx/fragments/
+ln -s $my_nginx/fragments/*.conf $local_nginx/fragments/
 
 
 echo GENERATING CERTIFICATE
