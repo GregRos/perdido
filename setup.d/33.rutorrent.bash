@@ -9,7 +9,7 @@ chown -R nginx:nginx /var/rutorrent
 www_rutorent=/var/www/perdido.bond/rutorrent
 rm -rf $www_rutorent
 git clone https://github.com/Novik/ruTorrent.git $www_rutorent
-ln -sf "$(realpath "./config/rutorrent/config.php")" $www_rutorent/
+ln -sf "$(realpath "./config/rutorrent/config.php")" $www_rutorent/conf/
 
 chown -R nginx:nginx $www_rutorent/
 chmod -R 777 $www_rutorent/
