@@ -3,7 +3,7 @@ echo --- SETTING UP WEB REVERSE PROXY ---
 
 exec > >(trap "" INT TERM; sed 's/^/[WEB] /')
 set -ex
-apt-get install -y certbot nginx python3-certbot-nginx apache2-utils
+apt-get install -y certbot nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
 my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
