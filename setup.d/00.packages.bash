@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo --- BASIC PACKAGES ---
-exec > >(trap "" INT TERM; sed 's/^/[FILEBOT] /')
+exec > >(trap "" INT TERM; sed 's/^/[PACKAGES] /')
 set -ex
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash
 apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
