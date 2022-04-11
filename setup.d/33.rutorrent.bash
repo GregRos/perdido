@@ -9,6 +9,10 @@ chown -R nginx:torrenting /var/rutorrent
 www_rutorent=/var/www/perdido.bond/rutorrent
 rm -rf $www_rutorent
 git clone https://github.com/Novik/ruTorrent.git $www_rutorent
+mkdir -p /tmp/rutorrent-themes
+git clone https://github.com/artyuum/3rd-party-ruTorrent-Themes /tmp/rutorrent-themes
+mv /tmp/rutorrent-themes/*/ $www_rutorent/plugins/theme/themes/
+cd /var/www/rutorrent/plugins/theme/themes
 ln -sf "$(realpath "./config/rutorrent/config.php")" $www_rutorent/conf/
 ln -sf "$(realpath "./config/rutorrent/www.conf")" /etc/php/7.4/fpm/pool.d/
 chown -R nginx:nginx $www_rutorent/
