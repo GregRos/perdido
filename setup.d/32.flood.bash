@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+echo SKIPPING FLOOD
+exit 0
+
 echo --- FLOOD ---
 exec > >(trap "" INT TERM; sed 's/^/[FLOOD] /')
 set -ex
