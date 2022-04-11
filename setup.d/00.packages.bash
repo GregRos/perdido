@@ -12,5 +12,5 @@ apt-get install -y \
   libcurl4-gnutls-dev pkg-config nodejs default-jre mediainfo \
   p7zip-full unrar dirmngr rtorrent \
   php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring php7.4-fpm \
-  ffmpeg sqlite3
+  ffmpeg sqlite3 python
 apt-get --no-install-recommends install filebot
