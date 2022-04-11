@@ -28,7 +28,7 @@ echo COPYING AND MODIFYING SOME CONFIG FILES
 cp ./unicode.mapping /etc/nginx/modsec/
 cp ./modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
 sed -i 's/SetRuleEngine DetectionOnly/SetRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
-ln -sf $start_dir/config/nginx/modsec.conf /etc/nginx/modsec/main.conf
+ln -sf "$(realpath $start_dir/config/nginx/modsec.conf)" /etc/nginx/modsec/main.conf
 
 echo BUILDING MODSECURITY
 sh build.sh
@@ -62,6 +62,3 @@ mv owasp-modsecurity-crs-3.2.0 owasp-modsecurity-crs
 mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
 mv owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example  owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
 mv owasp-modsecurity-crs /usr/local/
-
-echo CHWON ALL TO NGINX
-chown -R nginx:nginx /etc/nginx /usr/local/owasp-modsecurity-crs /usr/share/nginx
