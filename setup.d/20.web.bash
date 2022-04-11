@@ -36,9 +36,9 @@ echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
 rm -rf "${local_nginx:?}"/{fragments,conf.d}
 mkdir -p "$local_nginx"/{fragments,conf.d}
-ln -s "$my_nginx"/conf/*.conf $local_nginx/conf.d/
-ln -s $my_nginx/fragments/*.conf $local_nginx/fragments/
-
+ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
+ln -sf $my_nginx/fragments/*.conf $local_nginx/fragments/
+ln -sf $my_nginx/nginx.service /lib/systemd/system/
 
 echo REGENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live

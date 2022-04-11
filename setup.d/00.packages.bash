@@ -11,7 +11,7 @@ apt-get install -y \
   iperf3 fish certbot speedtest-cli gcc make g++ automake \
   libcurl4-gnutls-dev pkg-config nodejs default-jre mediainfo \
   p7zip-full unrar dirmngr rtorrent \
-  php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring php7.4-fpm \
+  php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring php7.4-fpm sox \
   ffmpeg sqlite3 python fail2ban \
   libtool libfuzzy-dev ssdeep gettext libcurl4-openssl-dev liblua5.3-dev libpcre3 libpcre3-dev libxml2 libxml2-dev libyajl-dev doxygen libcurl4 libgeoip-dev libssl-dev zlib1g-dev libxslt-dev liblmdb-dev libpcre++-dev libgd-dev \
   software-properties-common
