@@ -29,4 +29,10 @@ an ALL=(ALL) NOPASSWD: ALL
 
 " > /etc/sudoers.d/angr
 
+read -p "Disable SSH login for root account? y/n: " -n 1 -r
+echo
+if [[ "$REPLY" =~ [Yy] ]]; then
+    sed -w 's/PermitRootLogin yes$/PermitRootLogin no/mi' /etc/ssh/sshd_config
+fi
+
 echo --- DONE ---
