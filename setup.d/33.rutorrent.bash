@@ -15,6 +15,7 @@ git clone https://github.com/artyuum/3rd-party-ruTorrent-Themes /tmp/rutorrent-t
 mv /tmp/rutorrent-themes/*/ $www_rutorent/plugins/theme/themes/
 ln -sf "$(realpath "./config/rutorrent/config.php")" $www_rutorent/conf/
 ln -sf "$(realpath "./config/rutorrent/www.conf")" /etc/php/7.4/fpm/pool.d/
-
+rm -rf $www_rutorent/plugins/_cloudflare
+chown -R nginx:torrenting $www_rutorent
 echo --- DONE ---
 
