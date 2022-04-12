@@ -17,8 +17,8 @@ method.insert = cfg.session,  private|const|string, (cat,"/var/rtorrent/session/
 #    "\"",(cfg.session),"\" ")
 
 ## Enabled port rando
-network.port_range.set = 45000-60000
-network.port_random.set = yes
+network.port_range.set = 45001-45001
+network.port_random.set = no
 
 ## Changed for public trackers
 dht.mode.set = auto
