@@ -6,7 +6,7 @@ set -ex
 
 echo COPYING RTORRENTRC
 mkdir -p /etc/rtorrent
-cp -f ./config/rtorrent.rc /etc/rtorrent/rtorrent.rc
+ln -sf "$(realpath ./config/rtorrent.rc)" /etc/rtorrent/rtorrent.rc
 chown -R rtorrent:torrenting /etc/rtorrent
 
 echo CREATING SOME FOLDERS
