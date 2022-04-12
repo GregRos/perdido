@@ -16,3 +16,5 @@ apt-get install -y \
   libtool libfuzzy-dev ssdeep gettext libcurl4-openssl-dev liblua5.3-dev libpcre3 libpcre3-dev libxml2 libxml2-dev libyajl-dev doxygen libcurl4 libgeoip-dev libssl-dev zlib1g-dev libxslt-dev liblmdb-dev libpcre++-dev libgd-dev \
   software-properties-common
 
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7
+pip install cloudscraper
