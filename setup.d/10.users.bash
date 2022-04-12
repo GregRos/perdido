@@ -12,12 +12,12 @@ for group in $torrenting_group $rpc_group; do
 done
 
 echo CREATING USERS
-for user in gr an nginx flood arr; do
+for user in gr an nginx flood arr jellyfin; do
   getent passwd $user || useradd -m $user
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
-gpasswd -M gr,an,nginx $torrenting_group
+gpasswd -M gr,an,nginx,jellyfin $torrenting_group
 gpasswd -M nginx,rtorrent,gr,an,flood $rpc_group
 
 echo ADDING TO SUDOERS
