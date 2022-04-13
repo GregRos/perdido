@@ -6,7 +6,7 @@
 method.insert = cfg.basedir,  private|const|string, (cat,"/etc/rtorrent/")
 method.insert = cfg.download, private|const|string, (cat,"/data/downs/bt/going/")
 method.insert = cfg.logs,     private|const|string, (cat,"/var/rtorrent/logs/")
-method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),"rtorrent-",(system.time),".log")
+method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),"rtorrent-",(system.pid),".log")
 method.insert = cfg.session,  private|const|string, (cat,"/var/rtorrent/session/")
 
 ## DIRECTORIES NEED OT HAVE BEEN CREATED AT THIS POINT
