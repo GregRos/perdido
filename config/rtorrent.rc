@@ -83,6 +83,7 @@ method.insert = d.data_path, simple,\
         (cat, (d.directory), /),\
         (cat, (d.directory), /, (d.name))"
 method.insert = d.session_file, simple, "cat=(session.path), (d.hash), .torrent"
+method.insert = d.rt_file, simple, "cat=(d.session_file), .rtorrent"
 
 ## Run the rTorrent process as a daemon in the background
 ## (and control via XMLRPC sockets)
@@ -104,7 +105,7 @@ log.add_output = "info", "log"
 
 ### MOVE COMPLETED FILES ###
 # upon completion, move content to path specified above via custom1
-method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session=; execute=cp,-f,(cat,d.session_file=,\".rtorrent\"),$d.directory=/"
+method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session=; execute=cp,-f,$d.rt_file,$d.directory=/"
 method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,/data/downs/bt/done/"
 
 ### END of rtorrent.rc ###
