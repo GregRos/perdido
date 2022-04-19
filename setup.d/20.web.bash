@@ -43,7 +43,7 @@ ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
 echo REGENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
-certbot certonly --nginx -d perdido.bond
+certbot certonly --standalone --preferred-challenges http -d perdido.bond
 
 echo RELOADING NGINX
 nginx -t && nginx -s reload
