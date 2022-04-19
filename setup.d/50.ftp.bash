@@ -6,7 +6,7 @@ set -ex
 
 apt-get install -y vsftpd
 
-rm -rf /etc/vsfptd /etc/vsftpd.conf
+rm -rf /etc/vsftpd /etc/vsftpd.conf
 
 mkdir -p /etc/vsftpd
 
