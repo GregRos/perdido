@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo --- VSFTPD ---
-exec > >(trap "" INT TERM; sed 's/^/[JELLYFIN] /')
+exec > >(trap "" INT TERM; sed 's/^/[VSFTPD] /')
 set -ex
 
 apt-get install -y vsftpd
@@ -9,6 +9,6 @@ apt-get install -y vsftpd
 mkdir -p /etc/vsftpd
 
 ln -sf "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
-ln -sf "$(realpath ./config/vsftpd/user_list)" /etc/vsftp
+ln -sf "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
 
 echo --- DONE ---
