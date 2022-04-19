@@ -10,10 +10,10 @@ rm -rf /etc/vsfptd /etc/vsftpd.conf
 
 mkdir -p /etc/vsftpd
 
-ln -sf "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
-ln -sf "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
-ln -sf "$(realpath ./config/fail2ban/vsftpd.jail.conf)" /etc/fail2ban/jail.d
-ln -sf "$(realpath ./config/fail2ban/vsftpd.filter.conf)" /etc/fail2ban/filter.d/vsftpd.conf
+cp -f "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
+cp -f "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
+cp -f "$(realpath ./config/fail2ban/vsftpd.jail.conf)" /etc/fail2ban/jail.d
+cp -f "$(realpath ./config/fail2ban/vsftpd.filter.conf)" /etc/fail2ban/filter.d/vsftpd.conf
 systemctl restart fail2ban.service
 systemctl daemon-reload
 systemctl restart vsftpd.service
