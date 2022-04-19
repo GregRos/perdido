@@ -5,7 +5,7 @@ set -ex
 
 rm -rf /opt/sweeper
 git clone https://github.com/GregRos/sweeper.git /opt/sweeper
-ln -sf "$(realpath ./config/sweep)" /usr/bin/
+ln -sf "$(realpath ./config/sweeper)" /usr/bin/
 sweeper -h
 
 echo --- DONE ---
