@@ -20,7 +20,7 @@ cd ~/ccmod
 echo CLONING MODSECURITY
 git clone https://github.com/SpiderLabs/ModSecurity
 cd ModSecurity
-git checkout -b v3/master origin/v3/master
+git checkout -b v3/master
 git submodule init
 git submodule update
 
