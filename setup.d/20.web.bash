@@ -16,6 +16,9 @@ my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
 unlink $local_nginx/sites-enabled/default || true
+systemctl daemon-reload
+systemctl restart nginx
+nginx -t && nginx -s reload
 if ! curl localhost; then
   >&2 echo nginx seems to be broken
   exit 3
