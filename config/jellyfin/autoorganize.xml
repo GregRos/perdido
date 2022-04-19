@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoOrganizeOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TvOptions>
+    <IsEnabled>false</IsEnabled>
+    <MinFileSizeMb>50</MinFileSizeMb>
+    <LeftOverFileExtensionsToDelete />
+    <WatchLocations />
+    <SeasonFolderPattern>Season %s</SeasonFolderPattern>
+    <SeasonZeroFolderName>Season 0</SeasonZeroFolderName>
+    <EpisodeNamePattern>%sn - %sx%0e - %en.%ext</EpisodeNamePattern>
+    <MultiEpisodeNamePattern>%sn - %sx%0e-x%0ed - %en.%ext</MultiEpisodeNamePattern>
+    <OverwriteExistingEpisodes>false</OverwriteExistingEpisodes>
+    <DeleteEmptyFolders>false</DeleteEmptyFolders>
+    <ExtendedClean>false</ExtendedClean>
+    <CopyOriginalFile>false</CopyOriginalFile>
+    <AutoDetectSeries>false</AutoDetectSeries>
+    <SeriesFolderPattern>%fn</SeriesFolderPattern>
+    <QueueLibraryScan>false</QueueLibraryScan>
+  </TvOptions>
+  <MovieOptions>
+    <IsEnabled>false</IsEnabled>
+    <MinFileSizeMb>50</MinFileSizeMb>
+    <LeftOverFileExtensionsToDelete />
+    <WatchLocations />
+    <MoviePattern>%fn.%ext</MoviePattern>
+    <OverwriteExistingFiles>false</OverwriteExistingFiles>
+    <DeleteEmptyFolders>false</DeleteEmptyFolders>
+    <ExtendedClean>false</ExtendedClean>
+    <CopyOriginalFile>false</CopyOriginalFile>
+    <AutoDetectMovie>false</AutoDetectMovie>
+    <MovieFolder>false</MovieFolder>
+    <MovieFolderPattern>%mn (%my)</MovieFolderPattern>
+    <QueueLibraryScan>false</QueueLibraryScan>
+  </MovieOptions>
+  <Converted>true</Converted>
+</AutoOrganizeOptions>
