@@ -14,6 +14,7 @@ echo
 if [[ "$REPLY" =~ [Yy] ]]; then
   gpg --output filebot-lic.psm --decrypt ./data/filebot-lic.psm.gpg
   filebot --license filebot-lic.psm
+  runuser -u rtorrent -- filebot --license filebot-lic.psm
 fi
 
 echo FILEBOT SYSINFO
