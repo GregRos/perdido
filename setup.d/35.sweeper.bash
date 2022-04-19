@@ -19,6 +19,7 @@ mkdir -p /var/sweeper
 chown -R gr:torrenting /opt/sweeper
 chown -R rtorrent:torrenting /var/sweeper
 
+pip3.10 install patool
 runuser -u rtorrent -- pip3.10 install patool
 echo RUNNING TEST
 sweeper -h
