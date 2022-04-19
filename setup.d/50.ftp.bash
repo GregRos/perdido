@@ -8,8 +8,8 @@ apt-get install -y vsftpd
 
 mkdir -p /etc/vsftpd
 
-ln -sf "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
-ln -sf "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
+cp -f "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
+cp -f "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
 
 systemctl daemon-reload
 systemctl restart vsftpd.service
