@@ -21,7 +21,7 @@ echo CLONING MODSECURITY
 rm -rf ModSecurity
 git clone https://github.com/SpiderLabs/ModSecurity
 cd ModSecurity
-git checkout -b v3/master
+git checkout v3/master
 git submodule init
 git submodule update
 
