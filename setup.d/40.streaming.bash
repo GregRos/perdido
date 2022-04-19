@@ -17,3 +17,4 @@ ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/
 systemctl daemon-reload
 systemctl enable jellyfin.service
 systemctl start jellyfin.service
+chown -R jellyfin:jellyfin /etc/jellyfin /var/jellyfin
