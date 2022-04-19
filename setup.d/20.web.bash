@@ -39,7 +39,7 @@ mkdir -p "$local_nginx"/{fragments,conf.d}
 ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -sf $my_nginx/fragments/*.conf $local_nginx/fragments/
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
-
+ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
 echo REGENERATING CERTIFICATE
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
