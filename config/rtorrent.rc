@@ -4,7 +4,7 @@
 
 ## Instance layout (base paths)
 method.insert = cfg.basedir,  private|const|string, (cat,"/etc/rtorrent/")
-method.insert = cfg.download, private|const|string, (cat,"/data/downs/bt/going/")
+method.insert = cfg.download, private|const|string, (cat,"/data/downloads/going/")
 method.insert = cfg.logs,     private|const|string, (cat,"/var/rtorrent/logs/")
 method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),"rtorrent-",(system.pid),".log")
 method.insert = cfg.session,  private|const|string, (cat,"/var/rtorrent/session/")
@@ -105,7 +105,7 @@ log.add_output = "info", "log"
 
 ### MOVE COMPLETED FILES ###
 # upon completion, move content to path specified above via custom1
-method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session=; execute=cp,-f,$d.rt_file=,$d.directory=/"
-method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,/data/downs/bt/done/"
+method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session=; execute=sweep,$d.data_path="
+method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.data_path=,/data/downloads/done/"
 
 ### END of rtorrent.rc ###

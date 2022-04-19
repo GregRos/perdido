@@ -5,7 +5,7 @@ exec > >(trap "" INT TERM; sed 's/^/[TORRENTS] /')
 set -ex
 
 echo CREATING DATA FOLDER STRUCTURE
-mkdir -p /data/{downs/bt/{done,going},{anime,audiobooks,books,games,movies,not-porn,other,series,soft,trash}}
+mkdir -p /data/{downloads/{done,going},library/{movies,anime,shows,books,games,other,programs,trash}}
 chown -R rtorrent:torrenting /data
 echo --- DONE ---
 
