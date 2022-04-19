@@ -6,7 +6,7 @@ set -ex
 
 apt-get install -y vsftpd
 
-rm -rf /etc/vsftpd /etc/vsftpd.conf
+rm -rf /etc/vsftpd /etc/vsftpd.conf /etc/fail2ban/jail.d/vsftpd.jail.conf /etc/fail2ban/filter.d/vsftpd.conf
 
 mkdir -p /etc/vsftpd
 
