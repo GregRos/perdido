@@ -11,7 +11,7 @@ rm -rf /etc/jellyfin /etc/default/jellyfin
 mkdir -p /etc/jellyfin
 ln -sf "$(realpath ./config/jellyfin/default)" /etc/jellyfin/
 ln -sf "$(realpath ./config/jellyfin/config)" /etc/jellyfin/
-apt-get update -y
+apt-get update
 apt-get install jellyfin -y
 systemctl enable jellyfin.service
 systemctl start jellyfin.service
