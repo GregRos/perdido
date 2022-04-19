@@ -1,6 +1,5 @@
 #!/bin/bash
-echo --- BASIC PACKAGES ---
-
+set -ex
 export DEBIAN_FRONTEND=noninteractive
 
 echo Starting file execution
