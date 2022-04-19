@@ -3,7 +3,8 @@ echo --- SWEEPER ---
 exec > >(trap "" INT TERM; sed 's/^/[SWEEPER] /')
 set -ex
 
-git clone https://github.com/GregRos/sweeper.git /opt/sweep
+rm -rf /opt/sweeper
+git clone -f https://github.com/GregRos/sweeper.git /opt/sweeper
 ln -sf "$(realpath ./config/sweep)" /usr/bin/
 sweep -h
 
