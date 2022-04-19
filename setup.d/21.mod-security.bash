@@ -18,6 +18,7 @@ mkdir -p ~/ccmod
 cd ~/ccmod
 
 echo CLONING MODSECURITY
+rm -rf ModSecuritys
 git clone https://github.com/SpiderLabs/ModSecurity
 cd ModSecurity
 git checkout -b v3/master
