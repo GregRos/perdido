@@ -13,5 +13,7 @@ ln -sf "$(realpath ./config/jellyfin/default)" /etc/jellyfin/
 ln -sf "$(realpath ./config/jellyfin/config)" /etc/jellyfin/
 apt-get update
 apt-get install jellyfin -y
+ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/
+systemctl daemon-reload
 systemctl enable jellyfin.service
 systemctl start jellyfin.service
