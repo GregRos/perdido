@@ -1,6 +1,5 @@
 #!/bin/bash
 set -ex
-export DEBIAN_FRONTEND=noninteractive
 
 echo Starting file execution
 
