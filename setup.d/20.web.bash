@@ -4,6 +4,14 @@ echo --- SET UP WEB ---
 exec > >(trap "" INT TERM; sed 's/^/[20 WEB] /')
 set -ex
 apt-get install -y certbot nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
+
+echo REGENERATING CERTIFICATE
+systemctl stop nginx || true
+# Puts certificate in /etc/letsencrypt/live
+# can be skipped if cert is okay
+certbot certonly --standalone --preferred-challenges http -d perdido.bond
+
+
 my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
@@ -40,10 +48,7 @@ ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -sf $my_nginx/fragments/*.conf $local_nginx/fragments/
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
-echo REGENERATING CERTIFICATE
-# Puts certificate in /etc/letsencrypt/live
-# can be skipped if cert is okay
-certbot certonly --standalone --preferred-challenges http -d perdido.bond
+
 
 echo RELOADING NGINX
 nginx -t && nginx -s reload
