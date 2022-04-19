@@ -14,7 +14,7 @@ echo DIR SETUP
 start_dir="$PWD"
 mkdir -p /etc/nginx/modsec
 
-mkdir ~/ccmod
+mkdir -p ~/ccmod
 cd ~/ccmod
 
 echo CLONING MODSECURITY
