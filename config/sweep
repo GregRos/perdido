@@ -4,6 +4,4 @@ export SWEEPER_WORKING_DIR="/tmp/sweeper/working_dir"
 export SWEEPER_LIBRARY="/data/library"
 export SWEEPER_FILEBOT="/usr/bin/filebot"
 mkdir -p $SWEEPER_LIBRARY $SWEEPER_LOGS $SWEEPER_WORKING_DIR
-python3.10 /opt/sweeper/run.py sweep "$1" \
-  --conflict=index \
-  --action=hard
+python3.10 /opt/sweeper/run.py $@
