@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo --- SWEEPER ---
-exec > >(trap "" INT TERM; sed 's/^/[SWEEPER] /')
+exec > >(trap "" INT TERM; sed 's/^/[35 SWEEPER] /')
 set -ex
 
 echo DELETING OLD CODE

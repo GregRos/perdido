@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo --- TORRENTS --
-exec > >(trap "" INT TERM; sed 's/^/[TORRENTS] /')
+exec > >(trap "" INT TERM; sed 's/^/[30 LIBRARY STRUCTURE] /')
 set -ex
 
 echo CREATING DATA FOLDER STRUCTURE

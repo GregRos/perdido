@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo --- RTORRENT ---
-exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')
+exec > >(trap "" INT TERM; sed 's/^/[31 RTORRENT] /')
 set -ex
 
 echo COPYING RTORRENTRC

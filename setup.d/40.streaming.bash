@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo --- JELLYFIN ---
-exec > >(trap "" INT TERM; sed 's/^/[JELLYFIN] /')
+exec > >(trap "" INT TERM; sed 's/^/[40 JELLYFIN] /')
 set -ex
 
 echo STOPPING SERVICE (IF ANY)

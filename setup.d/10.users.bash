@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo --- USER STRUCTURE ---
-exec > >(trap "" INT TERM; sed 's/^/[USERS] /')
+exec > >(trap "" INT TERM; sed 's/^/[10 USERS] /')
 set -ex
 
 echo CREATING GROUPS

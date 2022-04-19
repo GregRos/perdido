@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo --- FIXING PERMISSIONS ---
-exec > >(trap "" INT TERM; sed 's/^/[RTORRENT] /')
+exec > >(trap "" INT TERM; sed 's/^/[80 FIX_PERMISSIONS] /')
 set -ex
 
 echo CHWON ALL TO NGINX

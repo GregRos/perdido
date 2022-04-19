@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-echo --- SETTING UP WEB REVERSE PROXY ---
+echo --- SET UP WEB ---
 
-exec > >(trap "" INT TERM; sed 's/^/[WEB] /')
+exec > >(trap "" INT TERM; sed 's/^/[20 WEB] /')
 set -ex
 apt-get install -y certbot nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
 my_nginx=$(realpath "./config/nginx")

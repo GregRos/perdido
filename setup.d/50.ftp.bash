@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo --- VSFTPD ---
-exec > >(trap "" INT TERM; sed 's/^/[VSFTPD] /')
+exec > >(trap "" INT TERM; sed 's/^/[50 VSFTPD] /')
 set -ex
 
 echo INSTALLING PACKAGES
