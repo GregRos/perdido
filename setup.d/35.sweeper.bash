@@ -3,6 +3,11 @@ echo --- SWEEPER ---
 exec > >(trap "" INT TERM; sed 's/^/[35 SWEEPER] /')
 set -ex
 
+echo INSTALLING NEW PYTHON
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install -y python3.10
+
 echo DELETING OLD CODE
 rm -rf /opt/sweeper
 
