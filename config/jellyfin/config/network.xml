@@ -2,9 +2,9 @@
 <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <RequireHttps>false</RequireHttps>
   <BaseUrl>/jellyfin</BaseUrl>
-  <PublicHttpsPort>8919</PublicHttpsPort>
+  <PublicHttpsPort>8920</PublicHttpsPort>
   <HttpServerPortNumber>8096</HttpServerPortNumber>
-  <HttpsPortNumber>8919</HttpsPortNumber>
+  <HttpsPortNumber>8920</HttpsPortNumber>
   <EnableHttps>false</EnableHttps>
   <PublicPort>8096</PublicPort>
   <UPnPCreateHttpPortMap>false</UPnPCreateHttpPortMap>
@@ -25,5 +25,8 @@
   <EnableUPnP>false</EnableUPnP>
   <EnableRemoteAccess>true</EnableRemoteAccess>
   <LocalNetworkSubnets />
-
+  <LocalNetworkAddresses>
+    <string>127.0.0.1</string>
+  </LocalNetworkAddresses>
+  <KnownProxies />
 </NetworkConfiguration>
