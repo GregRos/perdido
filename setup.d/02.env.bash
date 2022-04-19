@@ -3,7 +3,7 @@ echo --- ENVIRONMENT ---
 exec > >(trap "" INT TERM; sed 's/^/[02 ENV] /')
 set -ex
 
-ufe default allow outgoing
+ufw default allow outgoing
 ufw default deny incoming
 for arg in ssh http https 45001/tcp 21/tcp "64000:64321/tcp"; do
   ufw allow $arg
