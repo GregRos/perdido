@@ -23,7 +23,7 @@
   <RemoteIPFilter />
   <IsRemoteIPFilterBlacklist>false</IsRemoteIPFilterBlacklist>
   <EnableUPnP>false</EnableUPnP>
-  <EnableRemoteAccess>false</EnableRemoteAccess>
+  <EnableRemoteAccess>true</EnableRemoteAccess>
   <LocalNetworkSubnets />
   <LocalNetworkAddresses>
     <string>127.0.0.1</string>
