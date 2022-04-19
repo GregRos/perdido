@@ -15,7 +15,7 @@ ln -sf "$jellyfin_root"/config/* /etc/jellyfin/config
 apt-get update
 apt-get install jellyfin -y
 ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/
-chown -R jellyfin:jellyfin /etc/jellyfin /var/jellyfin
+chown -R jellyfin:torrenting /etc/jellyfin /var/jellyfin
 systemctl daemon-reload
 systemctl enable jellyfin.service
 systemctl start jellyfin.service

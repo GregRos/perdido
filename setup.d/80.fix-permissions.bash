@@ -11,6 +11,6 @@ chown -R nginx:torrenting /var/www/perdido.bond/rutorrent
 
 echo CHOWN ALL TO RTORRENT
 chown -R rtorrent:torrenting /var/rtorrent /etc/rtorrent /data
-chown -R jellyfin:jellyfin /etc/jellyfin /var/jellyfin
+chown -R jellyfin:torrenting /etc/jellyfin /var/jellyfin
 
 echo --- DONE ---
