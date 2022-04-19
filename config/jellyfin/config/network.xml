@@ -25,10 +25,5 @@
   <EnableUPnP>false</EnableUPnP>
   <EnableRemoteAccess>true</EnableRemoteAccess>
   <LocalNetworkSubnets />
-  <LocalNetworkAddresses>
-    <string>127.0.0.1</string>
-  </LocalNetworkAddresses>
-  <KnownProxies>
-    <string>127.0.0.1</string>
-  </KnownProxies>
+
 </NetworkConfiguration>
