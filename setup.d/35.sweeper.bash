@@ -11,6 +11,7 @@ git clone https://github.com/GregRos/sweeper.git /opt/sweeper
 ln -sf /opt/sweeper/sweeper /usr/bin/
 
 echo FIXING PERMISSIONS
+mkdir -p /var/sweeper
 chown -R gr:torrenting /opt/sweeper
 chown -R rtorrent:torrenting /var/sweeper
 

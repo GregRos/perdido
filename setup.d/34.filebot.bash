@@ -3,7 +3,7 @@ echo --- FILEBOT ---
 exec > >(trap "" INT TERM; sed 's/^/[34 FILEBOT] /')
 set -ex
 
-apt-get --no-install-recommends install filebot
+apt-get --no-install-recommends -y install filebot
 
 echo PRINT FILEBOT VERSION
 filebot -version
