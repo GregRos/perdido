@@ -4,7 +4,7 @@ echo --- JELLYFIN ---
 exec > >(trap "" INT TERM; sed 's/^/[40 JELLYFIN] /')
 set -ex
 
-echo STOPPING SERVICE (IF ANY)
+echo STOPPING SERVICE IF ANY
 systemctl stop jellyfin.service || true
 
 echo REGISTERING KEY AND INSTALLING
