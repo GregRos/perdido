@@ -5,4 +5,4 @@ export SWEEPER_LIBRARY="/data/library"
 export SWEEPER_FILEBOT="/usr/bin/filebot"
 mkdir -p $SWEEPER_LIBRARY $SWEEPER_LOGS $SWEEPER_WORKING_DIR
 
-python3.10 /opt/sweeper/run.py "$@" --conflict=index --action=hard
+python3.10 /opt/sweeper/run.py sweep "$@" --conflict=index --action=hard
