@@ -13,8 +13,8 @@ mkdir -p /etc/vsftpd
 ln -sf "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
 ln -sf "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
 ln -sf "$(realpath ./config/fail2ban/vsftpd.jail.conf)" /etc/fail2ban/jail.d
-ln -sf "$(realpath ./config/fail2ban/vsfptd.filter.conf)" /etc/fail2ban/filter.d
-systemctl restart jail2ban.service
+ln -sf "$(realpath ./config/fail2ban/vsftpd.filter.conf)" /etc/fail2ban/filter.d/vsftpd.conf
+systemctl restart fail2ban.service
 systemctl daemon-reload
 systemctl restart vsftpd.service
 systemctl enable vsftpd.service
