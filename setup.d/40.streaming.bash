@@ -12,9 +12,6 @@ mkdir -p /etc/jellyfin/config /var/jellyfin
 jellyfin_root=$(realpath ./config/jellyfin)
 ln -sf "$jellyfin_root/default" /etc/jellyfin
 ln -sf "$jellyfin_root/config/*" /etc/jellyfin/config
-for file in ./config/jellyfin/config/*; do
-  ln -sf $(realpath "$file") /etc/jellyfin/config/
-done
 apt-get update
 apt-get install jellyfin -y
 ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/
