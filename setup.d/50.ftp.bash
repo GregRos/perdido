@@ -6,6 +6,8 @@ set -ex
 
 apt-get install -y vsftpd
 
+rm -rf /etc/vsfptd /etc/vsftpd.conf
+
 mkdir -p /etc/vsftpd
 
 cp -f "$(realpath ./config/vsftpd/vsftpd.conf)" /etc/vsftpd.conf
