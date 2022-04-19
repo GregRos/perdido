@@ -39,7 +39,7 @@ else
     create_passwd=1
 fi
 
-if test $create_passwd == 0; then
+if test $create_passwd != 0; then
     htpasswd -c -B $local_nginx/htpasswd gr
 fi
 
