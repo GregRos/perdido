@@ -1,23 +1,24 @@
 # Perdido
 
-1. The name
+Hi, I'm Perdido. I'm a seedbox. Here is some info about me:
 
-From the book Perdido Street Station by China Mieville
 
-2. What is it?
+**OS:** Debian 11
 
-A set of scripts to configure a Debian 11 server as a seedbox.
+**Reverse Proxy:** Nginx
 
-Featuring:
+**HTTPS:** LetsEncrypt certificate (certbot)
 
-** Basics **
-1. Nginx reverse proxy
-   1. Full HTTPS support (Let's Encrypt auto cert)
-   2. ModSecurtiy security module
-   3. Authentication for most endpoints
-2. FTPS server
-3. fail2ban for ssh, ftp
-4. 
-5. rTorrent
-6. ruTorrent front-end
-7. 
+**Web Authentication:** Basic Auth, password file
+
+**File Transfer:** FTPS or SFTP (vsftpd), SCP 
+
+**Security:** UFW, fail2ban, ModSecurity
+
+**Torrent:** rTorrent backend, ruTorrent frontend
+
+**Auto-sort:** Filebot, Sweeper (custom python script, not here)
+
+**Streaming:** Jellyfin
+
+**Name:** From a book
