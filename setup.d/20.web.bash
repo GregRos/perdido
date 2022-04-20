@@ -9,22 +9,18 @@ set -ex
 apt-get install -y certbot nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
 
 echo REGENERATING CERTIFICATE
-systemctl stop nginx || true
+
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
-certbot certonly --standalone --preferred-challenges http -d perdido.bond
-
+read -p "Generate new certificate? [y/N]" -n 1 -r
+if [[ "$REPLY" =~ [Yy] ]]; then
+  systemctl stop nginx || true
+  certbot certonly --standalone --preferred-challenges http -d perdido.bond
+fi
 my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
 unlink $local_nginx/sites-enabled/default || true
-systemctl daemon-reload
-systemctl restart nginx
-nginx -t && nginx -s reload
-if ! curl localhost; then
-    echo >&2 nginx seems to be broken
-    exit 3
-fi
 
 create_passwd=0
 echo CREATING PASSWORD FILE
@@ -46,7 +42,6 @@ fi
 echo SETTING UP PERMISSIONS
 
 echo LINKING STATIC CONTENT
-rm -rf ${local_www:?} || true
 mkdir -p $local_www
 cp -rf $my_nginx/www/* $local_www
 chown -R nginx:nginx "$local_www"
@@ -61,7 +56,13 @@ ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
 
 echo RELOADING NGINX
+systemctl daemon-reload
+systemctl restart nginx
 nginx -t && nginx -s reload
+if ! curl localhost; then
+    echo >&2 nginx seems to be broken
+    exit 3
+fi
 
 echo ADDING CERTIFICATE RENEW CRONJOB
 mkdir -p /etc/cron.d
