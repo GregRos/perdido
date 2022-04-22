@@ -1,9 +1,12 @@
-address: 127.0.0.1
-baseurl: /files
-database: /data/filebrowser.db
-log: /var/filebrowser/filebrowser.log
-root: /data
-port: 7567
-auth:
-  method: noauth
+authmethod: noauth
+server:
+  address: 127.0.0.1
+  baseurl: /
+  database: /data/filebrowser.db
+  log: /var/filebrowser/filebrowser.log
+  root: /data
+  port: 7567
+  noauth: true
+  auth:
+    method: noauth
 

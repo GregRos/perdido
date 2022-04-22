@@ -18,5 +18,6 @@ ln -sf "$fb_config_src/filebrowser.service" "/etc/systemd/system/"
 
 systemctl daemon-reload
 systemctl enable filebrowser
+systemctl start filebrowser
 nginx -t && nginx -s reload
 

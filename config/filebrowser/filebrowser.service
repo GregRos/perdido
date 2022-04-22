@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 User=filebrowser
-Group=filebrowser
+Group=torrenting
 Type=simple
 KillMode=process
-ExecStart=/usr/bin/env filebrowser --config /etc/filebrowser/filebrowser.yaml
+ExecStart=/usr/bin/env filebrowser --config /etc/filebrowser/filebrowser.yaml --database /data/filebrowser.db
 Restart=on-failure
 RestartSec=3
 
