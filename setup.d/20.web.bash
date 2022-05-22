@@ -43,7 +43,7 @@ echo SETTING UP PERMISSIONS
 
 echo LINKING STATIC CONTENT
 mkdir -p $local_www
-cp -rf $my_nginx/www/* $local_www
+ln -sf $my_nginx/www/* $local_www
 chown -R nginx:nginx "$local_www"
 
 echo SETTING UP NGINX CONFIG
