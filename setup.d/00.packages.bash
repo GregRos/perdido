@@ -3,7 +3,7 @@ echo --- PACKAGES ---
 exec > >(trap "" INT TERM; sed 's/^/[00 PACKAGES] /')
 set -ex
 
-apt-get install -y curl wget git gpg screen byobu sudo apt-transport-https tree
+apt-get install -y curl wget git gpg screen byobu sudo apt-transport-https tree htop jq
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash
 apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
 echo "deb [arch=all] https://get.filebot.net/deb/ universal main" | sudo tee /etc/apt/sources.list.d/filebot.list

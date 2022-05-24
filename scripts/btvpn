@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -e
+arg="$1"
+
+ip_api="https://api.ipify.org?format=text"
+
+function vpn::test {
+  machine_ip="$(curl "$ip_api")"
+  echo MACHINE IP $machine_ip
+  vpn_ip="$(curl --interface proton1 "$ip_api")"
+  echo VPN IP $vpn_ip
+  if test "$vpn_ip" == "$machine_ip"; then
+    echo ERROR - IPS IDENTICAL
+    exit 10
+  fi
+}
+
+function vpn::start {
+  echo STARTING VPN...
+  output="$(swanctl --initiate --child proton1)"
+  vip="$(echo "$output" | grep -Poh '(?<=^\[IKE\] installing new virtual IP ).*$')"
+  ip link add proton1 type xfrm dev lo if_id 42
+  sysctl -w net.ipv4.conf.proton1.disable_policy=1
+  ip link set proton1 up
+  ip addr add "$vip" dev proton1
+  echo SUCCESS!
+}
+
+function vpn::stop {
+  echo STOPPING VPN...
+  if [[ -z "$(swanctl --list-sas)" ]]; then
+      echo NO VPN TO STOP
+      exit 3
+  fi
+  ip link set proton1 down
+  ip link del proton1
+  swanctl --terminate --ike proton
+}
+
+case "$arg" in
+  start)
+    vpn::start
+    vpn::test
+    ;;
+  stop)
+    vpn::stop
+    ;;
+  test)
+    vpn::test
+    ;;
+  *)
+    echo UNKNOWN COMMAND "$arg"
+    exit 10
+    ;;
+esac
+
