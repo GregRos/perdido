@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 echo --- SWEEPER ---
-exec > >(trap "" INT TERM; sed 's/^/[35 SWEEPER] /')
+exec > >(trap "" INT TERM; sed 's/^/[38 SWEEPER] /')
 set -ex
-
-echo INSTALLING NEW PYTHON
-sudo apt-get update
-sudo apt-get install -y python3.10
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7
 
 echo DELETING OLD CODE
 rm -rf /opt/sweeper
