@@ -3,7 +3,7 @@ echo --- PACKAGES ---
 exec > >(trap "" INT TERM; sed 's/^/[00 PACKAGES] /')
 set -ex
 
-apt-get install -y curl wget git gpg screen byobu sudo apt-transport-https tree htop jq
+apt-get install -y curl wget git gpg screen byobu sudo apt-transport-https tree htop jq rsync
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash
 apt-key adv --fetch-keys "https://raw.githubusercontent.com/filebot/plugins/master/gpg/maintainer.pub"
 echo "deb [arch=all] https://get.filebot.net/deb/ universal main" | sudo tee /etc/apt/sources.list.d/filebot.list
@@ -18,4 +18,3 @@ apt-get install -y \
   software-properties-common ufw python3-pip unzip
 
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7
-pip install cloudscraper

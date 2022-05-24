@@ -38,6 +38,7 @@ trackers.numwant.set = 80
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
 
+
 ## Limits for file handle resources, this is optimized for
 ## an `ulimit` of 1024 (a common default). You MUST leave
 ## a ceiling of handles reserved for rTorrent's internal needs!
@@ -61,6 +62,10 @@ log.xmlrpc = (cat, (cfg.logs), "xmlrpc.log")
 execute.nothrow = sh, -c, (cat, "echo >",\
     (session.path), "rtorrent.pid", " ",(system.pid))
 
+# SETS VPN INTERFACE
+method.insert = get_bind_addr, private|simple, "execute.capture = bash,/opt/perdido/scripts/btvpn,get-virtual-ip"
+execute.nothrow = (get_bind_addr)
+network.bind_address.set = (get_bind_addr)
 
 ## Other operational settings (check & adapt)
 encoding.add = utf8
@@ -74,7 +79,7 @@ schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
 #network.http.capath.set = "/etc/ssl/certs"
 #network.http.ssl_verify_peer.set = 0
 #network.http.ssl_verify_host.set = 0
-
+network.bind_address=
 
 ## Some additional values and commands
 method.insert = system.startup_time, value|const, (system.time)

@@ -5,36 +5,46 @@ arg="$1"
 ip_api="https://api.ipify.org?format=text"
 
 function vpn::test {
-  machine_ip="$(curl "$ip_api")"
-  echo MACHINE IP $machine_ip
+  echo TEST VPN proton1
   vpn_ip="$(curl --interface proton1 "$ip_api")"
-  echo VPN IP $vpn_ip
+  echo VPN IP: $vpn_ip
+  echo TEST DEFAULT
+  machine_ip="$(curl "$ip_api")"
+  echo MACHINE IP: $machine_ip
   if test "$vpn_ip" == "$machine_ip"; then
     echo ERROR - IPS IDENTICAL
     exit 10
   fi
+  echo PASSED!
 }
 
 function vpn::start {
-  echo STARTING VPN...
-  output="$(swanctl --initiate --child proton1)"
+  exec 5>&1 # https://stackoverflow.com/a/12451419/1333004
+  echo START VPN "proton1"
+  echo INIT IPsec/IKEv2 CONNECTION
+  output="$(swanctl --initiate --child "proton1" 2>&1 | tee >(cat - >&5))"
   vip="$(echo "$output" | grep -Poh '(?<=^\[IKE\] installing new virtual IP ).*$')"
+  echo VIRTUAL IP: "$vip"
+  echo CREATING XFRM DEVICE
   ip link add proton1 type xfrm dev lo if_id 42
-  sysctl -w net.ipv4.conf.proton1.disable_policy=1
+  sysctl -w net.ipv4.conf.${vpn}.disable_policy=1
   ip link set proton1 up
+  echo ATTACHING VIRTUAL IP
   ip addr add "$vip" dev proton1
-  echo SUCCESS!
+  echo DONE!
 }
 
 function vpn::stop {
-  echo STOPPING VPN...
-  if [[ -z "$(swanctl --list-sas)" ]]; then
-      echo NO VPN TO STOP
-      exit 3
-  fi
+  echo TERMINATING IPsec/IKEv2 CONNECTION
+  swanctl --terminate --ike proton1
+  echo DELETING XFRM DEVICE
   ip link set proton1 down
   ip link del proton1
-  swanctl --terminate --ike proton
+  echo DONE!
+}
+
+function vpn::get-virtual-ip {
+  echo -n "$(ip -o -4 addr show proton1 | grep -Poh '(?<=inet )[\d.]*' | sed -e 's/\s//g')"
 }
 
 case "$arg" in
@@ -47,6 +57,9 @@ case "$arg" in
     ;;
   test)
     vpn::test
+    ;;
+  get-virtual-ip)
+    vpn::get-virtual-ip
     ;;
   *)
     echo UNKNOWN COMMAND "$arg"
