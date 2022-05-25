@@ -5,7 +5,7 @@ exec > >(trap "" INT TERM; sed 's/^/[50 VSFTPD] /')
 set -ex
 
 echo INSTALLING PACKAGES
-apt-get install -y vsftpd
+apt-get install -y vsftpd lftp
 
 echo REMOVING OLD SETTINGS
 rm -rf /etc/vsftpd /etc/vsftpd.conf /etc/fail2ban/jail.d/vsftpd.jail.conf /etc/fail2ban/filter.d/vsftpd.conf
@@ -17,9 +17,13 @@ cp -f "$(realpath ./config/vsftpd/user_list)" /etc/vsftpd
 cp -f "$(realpath ./config/fail2ban/vsftpd.jail.conf)" /etc/fail2ban/jail.d
 cp -f "$(realpath ./config/fail2ban/vsftpd.filter.conf)" /etc/fail2ban/filter.d/vsftpd.conf
 
+# Need to test vsftpd because otherwise fail2ban won't start
+# cuz it can't find its logs file
+
 echo RESTARTING SERVICES
-systemctl restart fail2ban.service
 systemctl daemon-reload
 systemctl restart vsftpd.service
 systemctl enable vsftpd.service
+systemctl restart fail2ban.service
+
 echo --- DONE ---

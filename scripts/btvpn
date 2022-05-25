@@ -25,12 +25,7 @@ function vpn::start {
   output="$(swanctl --initiate --child "proton1" 2>&1 | tee >(cat - >&5))"
   vip="$(echo "$output" | grep -Poh '(?<=^\[IKE\] installing new virtual IP ).*$')"
   echo VIRTUAL IP: "$vip"
-  echo CREATING XFRM DEVICE
-  ip link add proton1 type xfrm dev lo if_id 42
-  sysctl -w net.ipv4.conf.${vpn}.disable_policy=1
   ip link set proton1 up
-  echo ATTACHING VIRTUAL IP
-  ip addr add "$vip" dev proton1
   echo DONE!
 }
 
@@ -38,8 +33,6 @@ function vpn::stop {
   echo TERMINATING IPsec/IKEv2 CONNECTION
   swanctl --terminate --ike proton1
   echo DELETING XFRM DEVICE
-  ip link set proton1 down
-  ip link del proton1
   echo DONE!
 }
 

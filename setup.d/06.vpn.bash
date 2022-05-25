@@ -22,11 +22,18 @@ set -ex
 
 apt-get install -y strongswan libstrongswan-extra-plugins libcharon-extra-plugins strongswan-swanctl
 systemctl restart strongswan-starter.service
+ip link add proton1 type xfrm dev lo if_id 42
+if [[ "$?" == "0" ]]; then
+  echo "200 proton1" > /etc/iproute2/rt_tables.d/proton1
+  ip rule add from 10.1.33.119 table proton1 prio 1
+  ip route add default dev proton1 table proton1
+fi
+
 sleep 1
 ./scripts/btvpn stop || true
 my_vpn=$(realpath "./config/vpn")
 
-ln -sf "$my_vpn/charon.conf" /etc/strongswan.d/charon.conf
+cp -f "$my_vpn/charon.conf" /etc/strongswan.d/charon.conf
 mkdir -p /etc/swanctl/x509ca/
 cp -f ./data/protonvpn.der /etc/swanctl/x509ca/
 cp -f "$my_vpn/swanctl/proton.conf" /etc/swanctl/conf.d/
