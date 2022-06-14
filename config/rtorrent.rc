@@ -63,9 +63,10 @@ execute.nothrow = sh, -c, (cat, "echo >",\
     (session.path), "rtorrent.pid", " ",(system.pid))
 
 # SETS VPN INTERFACE
-method.insert = get_bind_addr, private|simple, "execute.capture = bash,/opt/perdido/scripts/btvpn,get-virtual-ip"
-execute.nothrow = (get_bind_addr)
-network.bind_address.set = (get_bind_addr)
+# Enable if needed...
+# method.insert = get_bind_addr, private|simple, "execute.capture = bash,/opt/perdido/scripts/btvpn,get-virtual-ip"
+# execute.nothrow = (get_bind_addr)
+# network.bind_address.set = (get_bind_addr)
 
 ## Other operational settings (check & adapt)
 encoding.add = utf8
