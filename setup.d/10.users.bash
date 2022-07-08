@@ -17,7 +17,7 @@ for user in gr an nginx filebrowser arr jellyfin; do
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
-gpasswd -M gr,an,nginx,jellyfin,filebrowser $torrenting_group
+gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav $torrenting_group
 gpasswd -M nginx,rtorrent,gr,an $rpc_group
 
 echo ADDING TO SUDOERS
