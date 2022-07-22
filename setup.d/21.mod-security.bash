@@ -28,7 +28,7 @@ git submodule update
 echo COPYING AND MODIFYING SOME CONFIG FILES
 cp ./unicode.mapping /etc/nginx/modsec/
 cp ./modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
-sed -i 's/SetRuleEngine DetectionOnly/SetRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
+sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
 ln -sf "$(realpath $start_dir/config/nginx/modsec.conf)" /etc/nginx/modsec/main.conf
 
 echo BUILDING MODSECURITY
@@ -63,3 +63,15 @@ mv owasp-modsecurity-crs-3.2.0 owasp-modsecurity-crs
 mv owasp-modsecurity-crs/crs-setup.conf.example owasp-modsecurity-crs/crs-setup.conf
 mv owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example  owasp-modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
 mv owasp-modsecurity-crs /usr/local/
+
+# restart nginx
+echo RESTART NGINX
+nginx -t && nginx -s reload
+
+echo TEST BANNED USER AGENT
+result="$(curl -s -o /dev/null -w "%{http_code}" -H "User-Agent: Nikto" https://perdido.bond)"
+
+if [[ "$result" != "403" ]]; then
+  echo EXPECTED 403 DUE TO BLOCK
+  exit 5
+fi

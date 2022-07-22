@@ -6,10 +6,7 @@ exec > >(
     sed 's/^/[20 WEB] /'
 )
 set -ex
-apt-get install -y certbot nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
-
-echo REGENERATING CERTIFICATE
-
+apt-get install -y --no-install-recommends certbot
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
 read -p "Generate new certificate? [y/N]" -n 1 -r
@@ -50,12 +47,19 @@ echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
 rm -rf "${local_nginx:?}"/{fragments,conf.d}
 mkdir -p "$local_nginx"/{fragments,conf.d}
+
 ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -sf $my_nginx/fragments/*.conf $local_nginx/fragments/
+cp -f $my_nginx/secret.conf $local_nginx/fragments/secret.conf;
+random_token="$(d -vAn -N4 -tu4 < /dev/urandom | md5sum | cut -f1 -d' ')"
+sed -i "s/>>RANDOM<</$random_token/mig" $local_nginx/fragments/secret.conf
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
 
 echo RELOADING NGINX
+apt-get install -y --no-install-recommends nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
+
+echo REGENERATING CERTIFICATE
 systemctl daemon-reload
 systemctl restart nginx
 nginx -t && nginx -s reload
