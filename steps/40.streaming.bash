@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo --- JELLYFIN ---
-exec > >(trap "" INT TERM; sed 's/^/[40 JELLYFIN] /')
 set -ex
 
 echo STOPPING SERVICE IF ANY
@@ -34,4 +32,4 @@ systemctl daemon-reload
 systemctl enable jellyfin.service
 systemctl start jellyfin.service
 
-echo --- DONE ---
+

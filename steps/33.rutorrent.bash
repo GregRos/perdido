@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo --- RTORRENT ---
-exec > >(trap "" INT TERM; sed 's/^/[33 RTORRENT] /')
 set -ex
 
 echo CREATING SOME DIRS
@@ -26,5 +24,5 @@ rm -rf $www_rutorent/plugins/_cloudflare
 
 echo FIXING PERMISSIONS
 chown -R nginx:torrenting $www_rutorent
-echo --- DONE ---
+
 

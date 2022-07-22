@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-echo --- SWEEPER ---
-exec > >(trap "" INT TERM; sed 's/^/[38 SWEEPER] /')
 set -ex
 
 echo DELETING OLD CODE
@@ -20,5 +18,5 @@ runuser -u rtorrent -- pip3.10 install patool
 echo RUNNING TEST
 sweeper -h
 
-echo --- DONE ---
+
 

@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-echo --- SET UP WEB ---
 
-exec > >(
-    trap "" INT TERM
-    sed 's/^/[20 WEB] /'
-)
 set -ex
 apt-get install -y --no-install-recommends certbot
 # Puts certificate in /etc/letsencrypt/live

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo --- VSFTPD ---
-exec > >(trap "" INT TERM; sed 's/^/[50 VSFTPD] /')
 set -ex
 
 echo INSTALLING PACKAGES
@@ -26,4 +24,4 @@ systemctl restart vsftpd.service
 systemctl enable vsftpd.service
 systemctl restart fail2ban.service
 
-echo --- DONE ---
+

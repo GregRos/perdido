@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-echo --- FILEBOT ---
-exec > >(trap "" INT TERM; sed 's/^/[34 FILEBOT] /')
+
 set -ex
 
 apt-get --no-install-recommends -y install filebot
@@ -20,5 +19,5 @@ fi
 echo FILEBOT SYSINFO
 filebot -script fn:sysinfo
 
-echo --- DONE ---
+
 

@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-echo --- DOCKER ---
-exec > >(trap "" INT TERM; sed 's/^/[03 DOCKER] /')
 set -ex
 mkdir -p /etc/apt/keyrings
 if [[ ! -f /etc/apt/keyrings/docker.gpg ]]; then
@@ -11,6 +9,5 @@ if [[ ! -f /etc/apt/keyrings/docker.gpg ]]; then
 fi
 
 apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-echo --- DONE ---
+apt-get install -y docker-compsoe
 

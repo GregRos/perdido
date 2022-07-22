@@ -1,7 +1,5 @@
 ## Setup SSH keys for gr
-echo --- COMPILE PYTHON 3.10 ---
 
-exec > >(trap "" INT TERM; sed 's/^/[37 PYTHON3.10] /')
 set -ex
 
 echo DOWNLOADING SOURCE

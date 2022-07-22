@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo --- FILEBROWSER ---
-exec > >(trap "" INT TERM; sed 's/^/[51 FILEBROWSER] /')
 set -ex
 
 echo INSTALLING FILEBROWSER

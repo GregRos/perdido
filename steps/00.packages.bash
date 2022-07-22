@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-echo --- PACKAGES ---
-exec > >(trap "" INT TERM; sed 's/^/[00 PACKAGES] /')
 set -ex
 
 apt-get install -y curl wget git gpg screen byobu sudo apt-transport-https tree htop jq rsync

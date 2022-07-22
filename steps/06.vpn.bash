@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-echo --- VPN ---
-exec > >(trap "" INT TERM; sed 's/^/[06 VPN] /')
 set -ex
 
 # I decided not to bother with this for now. It works, but uploading is shit without

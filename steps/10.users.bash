@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo --- USER STRUCTURE ---
-exec > >(trap "" INT TERM; sed 's/^/[10 USERS] /')
 set -ex
 
 echo CREATING GROUPS
@@ -35,4 +33,4 @@ if [[ "$REPLY" =~ [Yy] ]]; then
     sed -i 's/PermitRootLogin yes$/PermitRootLogin no/mi' /etc/ssh/sshd_config
 fi
 
-echo --- DONE ---
+

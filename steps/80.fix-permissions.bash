@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-
-echo --- FIXING PERMISSIONS ---
-exec > >(trap "" INT TERM; sed 's/^/[80 FIX_PERMISSIONS] /')
 set -ex
 
 echo CHWON ALL TO NGINX
@@ -13,4 +10,4 @@ echo CHOWN ALL TO RTORRENT
 chown -R rtorrent:torrenting /var/rtorrent /etc/rtorrent /data
 chown -R jellyfin:torrenting /etc/jellyfin /var/jellyfin
 
-echo --- DONE ---
+
