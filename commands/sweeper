@@ -1,4 +1,5 @@
 #!/bin/bash
+# This script runs sweeper with the desired environment. It's meant to be called by rtorrent.
 export SWEEPER_LOGS="/var/sweeper/logs"
 export SWEEPER_WORKING_DIR="/tmp/sweeper/working_dir"
 export SWEEPER_LIBRARY="/data/library"

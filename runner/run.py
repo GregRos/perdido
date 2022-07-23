@@ -8,7 +8,7 @@ from script import InstallScript
 
 
 def create_cli():
-    root_parser = argparse.ArgumentParser(description="Perdido server installation script")
+    root_parser = argparse.ArgumentParser(description="Perdido setup script runner")
     subparsers = root_parser.add_subparsers(title="command", required=True, dest="command")
     run = subparsers.add_parser("run", help="run one or more installation scripts")
     run.add_argument("rules", nargs="+", help="one or more installation script names, numbers, or ranges")
@@ -23,7 +23,7 @@ def create_cli():
 
 root_dir = Path(__file__).parent.parent
 scripts = [
-    InstallScript(curScript) for curScript in Path(__file__).parent.parent.glob("steps/*.bash")
+    InstallScript(curScript) for curScript in Path(__file__).parent.parent.glob("setup.d/*.bash")
 ]
 scripts.sort(key=lambda x: x.pos)
 

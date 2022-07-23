@@ -23,8 +23,7 @@ git submodule update
 
 echo COPYING AND MODIFYING SOME CONFIG FILES
 cp ./unicode.mapping /etc/nginx/modsec/
-cp ./modsecurity.conf-recommended /etc/nginx/modsec/modsecurity.conf
-sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/nginx/modsec/modsecurity.conf
+cp -f ./config/modsecurity/*.conf /etc/nginx/modsec/
 ln -sf "$(realpath $start_dir/config/nginx/modsec.conf)" /etc/nginx/modsec/main.conf
 
 echo BUILDING MODSECURITY

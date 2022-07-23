@@ -13,6 +13,7 @@ mkdir -p /var/sweeper
 chown -R gr:torrenting /opt/sweeper
 chown -R rtorrent:torrenting /var/sweeper
 
+# Needed for sweeper to open archives
 pip3.10 install patool
 runuser -u rtorrent -- pip3.10 install patool
 echo RUNNING TEST

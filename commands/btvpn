@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# This starts up an IPSec/IKEv2 VPN and binds it to a specific interface using the VPN config files.
+# Not used currently.
 set -e
 arg="$1"
 

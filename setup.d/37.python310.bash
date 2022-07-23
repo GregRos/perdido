@@ -1,7 +1,8 @@
 ## Setup SSH keys for gr
 
 set -ex
-
+# Sweeper is written in Python 3.10. I could rewrite it but I like some of the
+# typing features they added, so I'm going to compile Python 3.10 instead.
 echo DOWNLOADING SOURCE
 
 wget https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tgz

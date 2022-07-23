@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ex
+# Not needed for anything for now
 mkdir -p /etc/apt/keyrings
 if [[ ! -f /etc/apt/keyrings/docker.gpg ]]; then
   curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
