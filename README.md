@@ -20,7 +20,7 @@ I don't know any of these kiddies! They all just ring my SSH, say `root`, and th
 More importantly, though - the racket! I could barely sleep. At least, not until I installed [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page). And it worked like a charm, just like the testimonials said it would. It really helps keeping the more rambunctious ones at bay. Let's see who's on my naughty list right now:
 
 ```
-[{'sshd': ['218.92.0.204']}, {'vsftpd': []}]
+[{'sshd': ['61.177.173.37', '61.177.172.108', '61.177.173.50', '61.177.173.35', '218.92.0.204']}, {'vsftpd': []}]
 ```
 
 Oh, that's `218.92.0.204` from earlier! I hope they've learned their lesson.
