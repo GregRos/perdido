@@ -1,22 +1,15 @@
 #!/usr/bin/env bash
 
 set -ex
-apt-get install -y --no-install-recommends certbot
-# Puts certificate in /etc/letsencrypt/live
-# can be skipped if cert is okay
-read -p "Generate new certificate? [y/N]" -n 1 -r
-if [[ "$REPLY" =~ [Yy] ]]; then
-  systemctl stop nginx || true
-  certbot certonly --standalone --preferred-challenges http -d perdido.bond
-fi
 my_nginx=$(realpath "./config/nginx")
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
 unlink $local_nginx/sites-enabled/default || true
 
 create_passwd=0
-echo CREATING PASSWORD FILE
+
 if test -f $local_nginx/htpasswd; then
+    echo CREATING PASSWORD FILE
     read -p "Password file exists. Recreate? y/n: " -n 1 -r
     echo
     if [[ "$REPLY" =~ [Yy] ]]; then
@@ -54,7 +47,6 @@ ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
 echo RELOADING NGINX
 apt-get install -y --no-install-recommends nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
 
-echo REGENERATING CERTIFICATE
 systemctl daemon-reload
 systemctl restart nginx
 nginx -t && nginx -s reload

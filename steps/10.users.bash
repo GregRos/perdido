@@ -5,7 +5,8 @@ set -ex
 echo CREATING GROUPS
 torrenting_group=torrenting
 rpc_group=rpcing
-for group in $torrenting_group $rpc_group; do
+cert_group=cert_group
+for group in $torrenting_group $rpc_group $cert_group; do
   getent group $group || groupadd $group
 done
 
@@ -17,7 +18,7 @@ getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
 gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav $torrenting_group
 gpasswd -M nginx,rtorrent,gr,an $rpc_group
-
+gpasswd -M nginx $cert_group
 echo ADDING TO SUDOERS
 echo "
 # Anna & Greg Definitions

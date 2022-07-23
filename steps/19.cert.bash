@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -ex
+apt-get install -y --no-install-recommends certbot
+# Puts certificate in /etc/letsencrypt/live
+# can be skipped if cert is okay
+read -p "Generate new certificate? [y/N]" -n 1 -r
+if [[ "$REPLY" =~ [Yy] ]]; then
+  systemctl stop nginx || true
+  for domain in perdido.bond files.perdido.bond stream.perdido.bond torrent.perdido.bond; do
+    certbot certonly --standalone --preferred-challenges http -d $domain
+  done
+fi
+
+chown root:cert_group /etc/letsencrypt{,**/*,*}
+chmod 750 /etc/letsencrypt{,**/*,*}
