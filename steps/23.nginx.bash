@@ -23,7 +23,7 @@ mkdir -p "$local_nginx"/{fragments,conf.d}
 ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
 ln -sf $my_nginx/fragments/*.conf $local_nginx/fragments/
 cp -f $my_nginx/secret.conf $local_nginx/fragments/secret.conf;
-random_token="$(d -vAn -N4 -tu4 < /dev/urandom | md5sum | cut -f1 -d' ')"
+random_token="$(od -vAn -N4 -tu4 < /dev/urandom | md5sum | cut -f1 -d' ')"
 sed -i "s/>>RANDOM<</$random_token/mig" $local_nginx/fragments/secret.conf
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
