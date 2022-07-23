@@ -12,5 +12,10 @@ if [[ "$REPLY" =~ [Yy] ]]; then
   done
 fi
 
+
+echo ADDING CERTIFICATE RENEW CRONJOB
+mkdir -p /etc/cron.d
+ln -sf $(realpath ./config/nginx/renew.cronjob) /etc/cron.d
+
 chown root:cert_group /etc/letsencrypt{,**/*,*}
 chmod 750 /etc/letsencrypt{,**/*,*}

@@ -8,9 +8,6 @@ local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
 unlink $local_nginx/sites-enabled/default || true
 
-
-echo SETTING UP PERMISSIONS
-
 echo LINKING STATIC CONTENT
 mkdir -p $local_www
 ln -sf $my_nginx/www/* $local_www
@@ -18,7 +15,7 @@ chown -R nginx:nginx "$local_www"
 
 echo SETTING UP NGINX CONFIG
 sed -i 's/user .*$/user nginx;/im' $local_nginx/nginx.conf
-rm -rf "${local_nginx:?}"/{snippets,conf.d}
+rm -rf "${local_nginx:?}"/{snippets,conf.d,fragments}
 mkdir -p "$local_nginx"/{snippets,conf.d}
 
 ln -sf "$my_nginx"/conf/*.conf $local_nginx/conf.d/
@@ -40,6 +37,3 @@ if ! curl localhost; then
     exit 3
 fi
 
-echo ADDING CERTIFICATE RENEW CRONJOB
-mkdir -p /etc/cron.d
-ln -sf "$my_nginx"/renew.cronjob /etc/cron.d

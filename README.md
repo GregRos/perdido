@@ -24,7 +24,7 @@ More importantly, though - the racket! I could barely sleep. At least, not until
 [{'sshd': ['61.177.173.37', '61.177.172.108', '61.177.173.50', '61.177.173.35', '218.92.0.204']}, {'vsftpd': []}]
 ```
 
-Oh, look! That's`218.92.0.204` from earlier! I hope they've learned their lesson.
+Oh, look! That's `218.92.0.204` from earlier! I hope they've learned their lesson.
 
 I couldn't stop just with that, though. Sure, `fail2ban` protects by FTP and SSH, but I wanted to be sure my nginx is safe too. So I compiled [ModSecurity](https://github.com/SpiderLabs/ModSecurity) and even got some [rules](https://owasp.org/www-project-modsecurity-core-rule-set/) for it. I hooked that all up and got it purring like a kitten. No nasty HTTP traffic is going to be bothering my nginx.
 
@@ -34,19 +34,32 @@ After all that was done I went out and got an official [LetsEncrypt](https://let
 
 Well, I say "Please use the other door."
 
-# Overview
+# Explanation
 
-This repo contains the code needed to set Perdido services up a new machine. The setup scripts are in `setup.d`, in the order they should run it.
+1. Perdido is not a shrinkwrapped product. It's moved a few environments but by its nature as a bundle of scripts it's not set-it-and-forget-it. It comes with no documentation and you can submit no bug reports.
+2. Perdido is not containerized. I don't know what would happen if you ran it in a container, but it probably won't work. It expects to run in a VM or physical machine.
 
-Each script does something specific
+This repo contains the code needed to set Perdido services up a new machine. The setup scripts are in `setup.d`, in the order they should run. Each script does something specific, but it's also idempotent. If the script has already executed running it again won't change anything.
 
-```bash
-- config # text config files for different services
-- data # binary files, encrypted files, etc
-- runner # python runner code
-- scripts # invoked by things after installation
-- setup.d # bash scripts that install all the programs
+All the scripts have `set -ex`, which means you'll see every line being executed and the script will stop on error.
+
+Some scripts symlink configuration files, so that pulling will automatically update the config file. In some cases you can't do that, and you have to create a real file instead. In that case the config file is copied. You should run the `setup` tool to rerun things just in case.
+
+You can run the scripts manually, but I wrote a handy Python runner for executing them. It's just `./setup`. It has a few nifty features. For example, the script's output will be decorated with its name and number so you know what's running right now.
+
+Plus, you can run specific scripts or a subset. Here is an example:
+
 ```
+./setup run 2,50,nginx,51- rtorrent
+```
+
+This will run the scripts:
+
+1. `02.env.bash`
+2. `23.nginx.bash`
+3. `31.rtorrent.bash`
+4. `50.ftp.bash`
+5. All scripts with `id > 51` (that's the `51-` parameter)
 
 # Installation
 
@@ -55,7 +68,7 @@ Requires Debian 11 and Python 3.9. All other requirements are installed by the s
 ```bash
 git clone git@github.com:GregRos/perdido.git /opt/perdido
 cd /opt/perdido
-./setup setup
+./setup install
 ```
 
 Perdido includes a handy CLI for running some of the stages separately. For example:

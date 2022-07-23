@@ -24,7 +24,6 @@ git submodule update
 echo COPYING AND MODIFYING SOME CONFIG FILES
 cp ./unicode.mapping /etc/nginx/modsec/
 cp -f ./config/modsecurity/*.conf /etc/nginx/modsec/
-ln -sf "$(realpath $start_dir/config/nginx/modsec.conf)" /etc/nginx/modsec/main.conf
 
 echo BUILDING MODSECURITY
 sh build.sh
