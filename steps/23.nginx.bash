@@ -2,27 +2,11 @@
 
 set -ex
 my_nginx=$(realpath "./config/nginx")
+mkdir -p /etc/nginx{,www,fragments,conf.d}
 local_nginx=/etc/nginx
 local_www=/var/www/perdido.bond
 unlink $local_nginx/sites-enabled/default || true
 
-create_passwd=0
-
-if test -f $local_nginx/htpasswd; then
-    echo CREATING PASSWORD FILE
-    read -p "Password file exists. Recreate? y/n: " -n 1 -r
-    echo
-    if [[ "$REPLY" =~ [Yy] ]]; then
-        rm $local_nginx/htpasswd
-        create_passwd=1
-    fi
-else
-    create_passwd=1
-fi
-
-if test $create_passwd != 0; then
-    htpasswd -c -B $local_nginx/htpasswd gr
-fi
 
 echo SETTING UP PERMISSIONS
 
