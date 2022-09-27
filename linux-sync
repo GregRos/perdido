@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ lsyncd -nodaemon -log all -rsyncssh /mnt/c/codegr/perdido perdido.bond /opt/perdido

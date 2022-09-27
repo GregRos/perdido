@@ -29,7 +29,9 @@ if status is-interactive
     function pd.sweep -d "Calls a manual sweep of target root"
         sudo -u rtorrent /opt/perdido/commands/sweeper $argv
     end
-
+    function pd.fix.owners -d "Fixes owners for all known folders"
+        pd.setup run fix-permissions
+    end
     # Log files
     begin
         function pd.def.tail -a name path -d "Defines a function to tail a log"
@@ -37,7 +39,7 @@ if status is-interactive
                 echo PATH $path DOES NOT EXIST
                 return 1
             end
-            # Defines dynamic `pd.X.log` 
+            # Defines dynamic `pd.X.log`
             echo "
             function pd.$name.log -a lines -d 'Tail log file for $name, "(basename $path)"'
                 pd.tail $path \$lines

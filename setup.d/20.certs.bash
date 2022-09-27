@@ -7,7 +7,7 @@ apt-get install -y --no-install-recommends certbot
 read -p "Generate new certificate? [y/N]" -n 1 -r
 if [[ "$REPLY" =~ [Yy] ]]; then
   systemctl stop nginx || true
-  for domain in perdido.bond files.perdido.bond stream.perdido.bond torrent.perdido.bond logs.perdido.bond; do
+  for domain in perdido.bond files.perdido.bond stream.perdido.bond jellyfin.perdido.bond rutorrent.perdido.bond logs.perdido.bond; do
     certbot certonly --standalone --preferred-challenges http -d $domain
   done
 fi
@@ -15,7 +15,7 @@ fi
 
 echo ADDING CERTIFICATE RENEW CRONJOB
 mkdir -p /etc/cron.d
-ln -sf $(realpath ./config/nginx/renew.cronjob) /etc/cron.d
+ln -sf "$(realpath ./config/nginx/renew.cronjob)" /etc/cron.d
 
 chown root:cert_group /etc/letsencrypt{,**/*,*}
 chmod 750 /etc/letsencrypt{,**/*,*}
