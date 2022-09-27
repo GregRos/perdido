@@ -42,7 +42,10 @@ class ScriptNameSpec(ScriptSpec):
 def parse_spec(text: str):
     if "-" in text:
         [before, after] = text.split("-")
-        return ScriptIdRangeSpec(int(before) if before else None, int(after) if after else None)
+        if not before or before.isdigit():
+            return ScriptIdRangeSpec(int(before) if before else None, int(after) if after else None)
+        else:
+            return ScriptNameSpec(text)
     elif text.isdigit():
         return ScriptIdSpec(int(text))
     else:

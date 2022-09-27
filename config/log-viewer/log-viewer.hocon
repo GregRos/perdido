@@ -1,0 +1,28 @@
+logs = [
+  {
+    path: "/var/log/nginx/*.log",
+  },
+  {
+    path: "/var/log/*.log"
+  },
+  {
+    path: "/var/sweeper/**/*.log"
+  },
+  {
+    path: "/var/rutorrent/*.log"
+  },
+  {
+    path: "/var/jellyfin/log/*.log"
+  },
+  {
+    path: "/var/filebrowser/*.log"
+  },
+  {
+    path: "/var/rtorrent/*.log"
+  }
+]
+log-paths = {
+  xx = {
+    file: "/var/log/rutorrent.log"
+  }
+}

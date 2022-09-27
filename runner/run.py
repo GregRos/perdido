@@ -43,6 +43,9 @@ else:
     if command == "test":
         print("\n".join((str(x) for x in matched_scripts)))
     elif command == "run":
+        if not matched_scripts:
+            print("MATCHED 0 SCRIPTS")
+            exit(1)
         for script in matched_scripts:
             script.run()
 

@@ -7,7 +7,7 @@ apt-get install -y --no-install-recommends certbot
 read -p "Generate new certificate? [y/N]" -n 1 -r
 if [[ "$REPLY" =~ [Yy] ]]; then
   systemctl stop nginx || true
-  for domain in perdido.bond files.perdido.bond stream.perdido.bond torrent.perdido.bond; do
+  for domain in perdido.bond files.perdido.bond stream.perdido.bond torrent.perdido.bond logs.perdido.bond; do
     certbot certonly --standalone --preferred-challenges http -d $domain
   done
 fi

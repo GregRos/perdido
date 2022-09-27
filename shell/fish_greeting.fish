@@ -1,3 +1,4 @@
 function fish_greeting
-    echo Greetings, I am Fish.
+    echo 'Shortcuts available via pd.* commands.'
+    echo
 end
