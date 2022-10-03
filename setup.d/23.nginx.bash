@@ -30,7 +30,10 @@ random_token="$(od -vAn -N4 -tu4 < /dev/urandom | md5sum | cut -f1 -d' ')"
 sed -i "s/>>RANDOM<</$random_token/mig" $local_nginx/snippets/secret.conf
 
 echo RELOADING NGINX
-apt-get install -y --no-install-recommends nginx-core nginx-common nginx nginx-full python3-certbot-nginx apache2-utils
+apt-get install -y --no-install-recommends \
+  nginx-core nginx-common nginx nginx-full \
+  python3-certbot-nginx apache2-utils \
+  libnginx-mod-http-dav-ext
 
 systemctl daemon-reload
 systemctl restart nginx
