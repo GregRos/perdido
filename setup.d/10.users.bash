@@ -11,7 +11,7 @@ for group in $torrenting_group $rpc_group $cert_group; do
 done
 
 echo CREATING USERS
-for user in gr an nginx filebrowser arr jellyfin; do
+for user in gr an nginx filebrowser arr jellyfin iperf; do
   getent passwd $user || useradd -m $user
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
