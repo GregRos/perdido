@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<label>
+    Username
+    <input type="text" tabindex="1">
+</label>
+<label>
+    Pass
+    <input type="password" tabindex="2">
+</label>
+<button>
+    Login
+</button>
+<script>
+    document.querySelector("button").onclick = () => {
+        const user = document.querySelector("input[type='text']");
+        const pass = document.querySelector("input[type='password']");
+        document.location = `https://${user}:${pass}@perdido.bond/`
+    }
+</script>
+</body>
+</html>

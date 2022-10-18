@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import sys
 from hashlib import sha256
-from itertools import pairwise
 
 
 class User:
