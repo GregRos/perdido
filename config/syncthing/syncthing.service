@@ -1,0 +1,16 @@
+[Unit]
+Description=SyncThing Service
+After=network.target
+
+[Service]
+WorkingDirectory=/etc/syncthing
+User=syncthing
+Group=syncthing
+Type=simple
+KillMode=process
+ExecStart=/opt/syncthing/syncthing --config /etc/syncthing --data /data/syncthing
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

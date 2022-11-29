@@ -23,6 +23,10 @@ ln -sf $my_nginx/snippets/*.conf $local_nginx/snippets/
 
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
+rm /etc/fail2ban/{jail.d,filter.d}/nginx-*.conf
+
+cp -f ./config/fail2ban/filter.d/nginx-*.conf /etc/fail2ban/filter.d/
+cp -f ./config/fail2ban/jail.d/nginx-*.conf /etc/fail2ban/jail.d/
 
 echo GENERATING SECRET
 cp -f $my_nginx/secret.conf $local_nginx/snippets/secret.conf;

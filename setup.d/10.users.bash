@@ -11,12 +11,13 @@ for group in $torrenting_group $rpc_group $cert_group; do
 done
 
 echo CREATING USERS
-for user in gr an nginx filebrowser arr jellyfin iperf; do
+for user in gr an nginx filebrowser arr jellyfin iperf syncthing; do
   getent passwd $user || useradd -m $user
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
 gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav $torrenting_group
+gpasswd -M gr,an syncthing
 gpasswd -M nginx,rtorrent,gr,an $rpc_group
 gpasswd -M nginx $cert_group
 echo ADDING TO SUDOERS

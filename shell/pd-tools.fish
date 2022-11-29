@@ -7,10 +7,17 @@ if status is-interactive
     function pd.svc.status -a name -d "Gets the status of a systemd service"
         sudo systemctl status $name
     end
+    function pd.svc.start -a name -d "Starts a systemd service"
+        sudo systemctl start $name
+    end
+    function pd.svc.stop -a name -d "Starts a systemd service"
+        sudo systemctl stop $name
+    end
     function pd.svc.exists -a service -d "Checks if a systemd service exists"
         test (systemctl list-unit-files $service'*' | wc -l) -gt 3
     end
     function pd.svc.restart -a service -d "Restarts a systemd service"
+        sudo systemctl daemon-reload
         sudo systemctl restart $service
     end
     function pd.nginx.reload -d "Refreshes nginx"
@@ -97,5 +104,8 @@ if status is-interactive
         pd.def.service filebrowser
         pd.def.service php7.4-fpm
         pd.def.service log-viewer
+        pd.def.service syncthing
+        pd.def.service iperf
+        pd.def.service smbd
     end
 end
