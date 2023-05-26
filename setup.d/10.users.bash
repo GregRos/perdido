@@ -6,20 +6,22 @@ echo CREATING GROUPS
 torrenting_group=torrenting
 rpc_group=rpcing
 cert_group=cert_group
-for group in $torrenting_group $rpc_group $cert_group; do
+web_group=web
+for group in $torrenting_group $rpc_group $cert_group $web_group; do
   getent group $group || groupadd $group
 done
 
 echo CREATING USERS
-for user in gr an nginx filebrowser arr jellyfin iperf syncthing; do
+for user in gr an nginx search filebrowser arr jellyfin iperf syncthing factorio; do
   getent passwd $user || useradd -m $user
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
-gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav $torrenting_group
+gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav,search $torrenting_group
 gpasswd -M gr,an syncthing
-gpasswd -M nginx,rtorrent,gr,an $rpc_group
+gpasswd -M nginx,rtorrent,gr,an,search $rpc_group
 gpasswd -M nginx $cert_group
+gpasswd -M nginx,gr,an $web_group
 echo ADDING TO SUDOERS
 echo "
 # Anna & Greg Definitions

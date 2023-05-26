@@ -32,7 +32,6 @@ class Api:
     def _run(self, rule: Callable[[InstallScript], bool]):
         for script in self._match(rule):
             script.run()
-        self._chown()
 
     def invoke(self, obj: Command):
         if obj.command == "run":

@@ -16,7 +16,6 @@ class Cli:
         subparsers.add_parser("list", help="list installation scripts")
         test = subparsers.add_parser("test", help="test a rule spec")
         test.add_argument("rule", nargs="+", help="one or more installation script names, numbers, or ranges")
-        test.add_argument("--no-chown", default=None, dest="no_chown", action="store_true")
 
         chown = subparsers.add_parser("chown", help="fix permissions")
 

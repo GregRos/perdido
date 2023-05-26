@@ -93,6 +93,9 @@ if status is-interactive
             function pd.$name.restart -d 'Restarts the $name service.'
                 pd.svc.restart $name
             end
+            function pd.$name.stop -d 'Stops the $name service.'
+                pd.svc.stop $name
+            end
             " | source
 
         end
@@ -107,5 +110,9 @@ if status is-interactive
         pd.def.service syncthing
         pd.def.service iperf
         pd.def.service smbd
+        pd.def.service sonarr
+        pd.def.service radarr
+        pd.def.service jackett
+        pd.def.service prowlarr
     end
 end

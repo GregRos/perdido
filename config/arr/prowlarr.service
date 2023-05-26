@@ -1,0 +1,14 @@
+[Unit]
+Description=Prowlarr Indexer Manager
+After=syslog.target network.target
+[Service]
+User=search
+Group=search
+Type=simple
+
+ExecStart=/opt/prowlarr/Prowlarr -nobrowser -data=/var/lib/prowlarr/
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

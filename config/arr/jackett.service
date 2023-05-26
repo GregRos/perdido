@@ -1,0 +1,15 @@
+[Unit]
+Description=Jackett Torrent Proxy Server
+After=network.target
+
+[Service]
+User=search
+Group=search
+Type=simple
+KillMode=process
+ExecStart=/opt/jackett/jackett --NoRestart
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
