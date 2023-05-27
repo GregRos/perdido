@@ -6,7 +6,7 @@ cd ./config/minecraft
 docker-compose down || true
 docker-compose up -d
 sleep 5
-cp $config/{server.properties,whitelist.json} /opt/minecraft/
+cp $config/{server.properties,*.json} /opt/minecraft/
 docker restart minecraft
 until [ "`docker inspect -f {{.State.Health.Status}} minecraft`"=="healthy" ]; do
     sleep 0.1;
