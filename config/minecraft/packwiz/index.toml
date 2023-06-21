@@ -1,0 +1,81 @@
+hash-format = "sha256"
+
+[[files]]
+file = "complementary-shaders.pw.toml"
+hash = "d421c9a202da84bd94bd32a05abd63274def6510cc5a50efc6993c6b75ffe7e6"
+metafile = true
+
+[[files]]
+file = "mods/architectury-api.pw.toml"
+hash = "5ade0167c12aa00d6cced218514e6a6531c7c7773a4c1cb79b14a2bc484075dd"
+metafile = true
+
+[[files]]
+file = "mods/cloth-config.pw.toml"
+hash = "88eecbb9eafdf2eb226c594a714f305e71186acdc79a2fa2deb78cd91b74d92a"
+metafile = true
+
+[[files]]
+file = "mods/dynamic-music-updated.pw.toml"
+hash = "c343c263a6a194afe1d080b39b0f071f59bc958a864e1e1cc7150c3b31607b95"
+metafile = true
+
+[[files]]
+file = "mods/entityculling.pw.toml"
+hash = "5181ced5cde8b82c3e252c613ba98562996c69ca48b34286f55a02f9d82b1a06"
+metafile = true
+
+[[files]]
+file = "mods/fabric-api.pw.toml"
+hash = "edceb4f1caea66e9bd4d26b775f5ab4f01542c6564a2806286c06ddb316eaca6"
+metafile = true
+
+[[files]]
+file = "mods/iris.pw.toml"
+hash = "659e2447deffc797f441ed09c0b05d75138253dfacfe1479d3938e55773be4b6"
+metafile = true
+
+[[files]]
+file = "mods/jade.pw.toml"
+hash = "93408886f1a8f55a2f4f128b81f8a2de5c348933bcea0a2b5071b3830e518085"
+metafile = true
+
+[[files]]
+file = "mods/jei.pw.toml"
+hash = "4ebfb889d2b8773675ad26b43796721bf96597091fb52e988560fc761dbdbbe8"
+metafile = true
+
+[[files]]
+file = "mods/mouse-tweaks.pw.toml"
+hash = "5498b1db0081867fce31ca1eea88a224565b3142205a8d0082e8b1761faeeefd"
+metafile = true
+
+[[files]]
+file = "mods/not-enough-animations.pw.toml"
+hash = "f13cd411d017440ee22407cc05866276c8ff31a6b163df07d12168bd95619bdb"
+metafile = true
+
+[[files]]
+file = "mods/sodium.pw.toml"
+hash = "217b07516517c4c01958387192143943f3e9309a0e935828f9f32af771425d66"
+metafile = true
+
+[[files]]
+file = "mods/sound-physics-remastered.pw.toml"
+hash = "96ef70508056cb64e146ebba5d558ca56f356fe80007681ddf11ddf338f4edd4"
+metafile = true
+
+[[files]]
+file = "resourcepacks/enhanced-boss-bars.pw.toml"
+hash = "e03c12166d1fc1b317475252b098e97fae551f167087611c2b5cda51fef2e863"
+metafile = true
+
+[[files]]
+file = "resourcepacks/motschens-better-leaves.pw.toml"
+hash = "7a813714e0164862476829f0d36087842f999aee45a9fd1872e3529f241c2742"
+metafile = true
+
+[[files]]
+file = "resourcepacks/yourscraft.pw.toml"
+hash = "b499f246b6dde5f7865194c9b1b4b126d2bd9dbb748589fbf1a5fff7df0e1040"
+metafile = true

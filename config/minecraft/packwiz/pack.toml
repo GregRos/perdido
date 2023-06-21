@@ -1,0 +1,13 @@
+name = "Perdido"
+author = "GregRos"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "16b16bbdf71b01f4afc4d81c390a73decf5712e1b8f0a4b3fd6055def80dc0a7"
+
+[versions]
+fabric = "0.14.21"
+minecraft = "1.20.1"

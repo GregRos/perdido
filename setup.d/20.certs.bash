@@ -36,7 +36,8 @@ wait
 
 echo ADDING CERTIFICATE RENEW CRONJOB
 mkdir -p /etc/cron.d
-ln -sf "$(realpath ./config/nginx/renew.cronjob)" /etc/cron.d
-
+rm -f /etc/cron.d/renew-certificates || true
+cp "$(realpath ./config/nginx/renew.cronjob)" /etc/cron.d/renew-certificates
+chown root:root /etc/cron.d/renew-certificates
 chown root:cert_group /etc/letsencrypt{,**/*,*}
 chmod 750 /etc/letsencrypt{,**/*,*}

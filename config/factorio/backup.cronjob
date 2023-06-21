@@ -1,0 +1,1 @@
+*/10 * * * * root bash /opt/perdido/config/factorio/backup | logger -t backup-factorio

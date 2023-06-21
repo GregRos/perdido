@@ -1,9 +1,11 @@
 version: '3'
 services:
   factorio:
-    image: factoriotools/factorio:1.1.80
+    image: my-factorio:latest
     container_name: factorio
     restart: always
+    environment:
+      SAVE_NAME: "main"
     volumes:
        - /opt/factorio:/factorio
     ports:

@@ -1,0 +1,13 @@
+name = "YoursCraft HD Vanilla Faithful"
+filename = "YoursCraft 1.20 V2.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "7000dd95ff387442275c1ee81f8451e5b1f34504"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 4599427
+project-id = 453081

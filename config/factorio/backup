@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -ex
+echo BACKING UP FACTORIO
+
+echo SAVING
+docker exec factorio save-game
+
+echo BACKING UP
+restic backup --tag factorio-world /opt/factorio/saves/main.zip
+restic backup --tag factorio /opt/factorio

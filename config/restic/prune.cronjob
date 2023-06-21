@@ -1,0 +1,1 @@
+*/10 * * * * root bash /opt/perdido/config/restic/prune.bash | logger -t prune-restic

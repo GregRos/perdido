@@ -1,13 +1,17 @@
 set -ex
 
-echo DOING THE DOCKER COMPOSE
 config=$PWD/config/factorio
 cd $config
+echo BUILDING THE DOCKER IMAGE
+docker build -t my-factorio .
+echo DOING THE DOCKER COMPOSE
 docker-compose down || true
 docker-compose up -d
 sleep 5
-cp $config/*.json /opt/factorio/config/
-docker restart factorio
+rm -f /etc/cron.d/backup-factorio || true
+cp "$(realpath ./backup.cronjob)" /etc/cron.d/backup-factorio
+chown root:root /etc/cron.d/backup-factorio
+
 until [ "`docker inspect -f {{.State.Running}} factorio`"=="true" ]; do
     sleep 0.1;
 done;
