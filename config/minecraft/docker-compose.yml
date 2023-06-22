@@ -8,12 +8,14 @@ services:
       - "25565:25565"
     volumes:
       - /opt/minecraft:/data
+      - /opt/perdido/config/minecraft/packwiz:/data/packwiz
     environment:
       EULA: "TRUE"
-      TYPE: "FORGE"
+      TYPE: "FABRIC"
       VERSION: "1.20.1"
-      REMOVE_OLD: "TRUE"
-      MODS_FORGEAPI_KEY:
+      FABRIC_VERSION: "0.14.21"
+      PACKWIZ_URL: "file:///data/packwiz/pack.toml"
+
 
 
 

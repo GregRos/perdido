@@ -10,6 +10,8 @@ docker-compose up -d
 sleep 5
 rm -f /etc/cron.d/backup-minecraft || true
 cp "$(realpath ./backup.cronjob)" /etc/cron.d/backup-minecraft
+ln -sf "$(realpath ./packwiz)" /data/gregros.dev/xyz/packwiz
+
 chown root:root /etc/cron.d/backup-minecraft
 until [ "`docker inspect -f {{.State.Health.Status}} minecraft`"=="healthy" ]; do
     sleep 0.1;
