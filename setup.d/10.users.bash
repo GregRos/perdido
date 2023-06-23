@@ -12,13 +12,15 @@ for group in $torrenting_group $rpc_group $cert_group $web_group; do
 done
 
 echo CREATING USERS
-for user in gr an nginx search filebrowser arr jellyfin iperf syncthing factorio; do
+for user in gr an nginx search filebrowser docker arr jellyfin iperf syncthing factorio minecraft-modpack; do
   getent passwd $user || useradd -m $user
 done
 getent passwd rtorrent || useradd -g $torrenting_group -m rtorrent
 echo ADDING TO GROUPS
 gpasswd -M gr,an,nginx,jellyfin,filebrowser,clamav,search $torrenting_group
 gpasswd -M gr,an syncthing
+gpasswd -M gr,an,docker docker
+gpasswd -M gr,an,docker minecraft-modpack
 gpasswd -M nginx,rtorrent,gr,an,search $rpc_group
 gpasswd -M nginx $cert_group
 gpasswd -M nginx,gr,an $web_group

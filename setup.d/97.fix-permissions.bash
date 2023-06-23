@@ -6,8 +6,9 @@ chown -R nginx:nginx /etc/nginx /usr/local/owasp-modsecurity-crs /usr/share/ngin
 chown -R nginx:nginx /var/www
 chown -R search:search /var/lib/prowlarr
 chown -R nginx:torrenting /var/www/perdido.bond/rutorrent
-chown -R search:search /opt/sonarr || true
-chown -R search:search /opt/radarr || true
+chown -R search:search /opt/{sonarr,radarr,prowlarr,jackett} || true
+chown -R syncthing:syncthing /opt/syncthing{,-discovery}
+
 echo CHOWN ALL CERTS TO NGINX
 
 for cur_cert in /etc/letsencrypt/live/{*.,}{perdido.bond,gregros.dev}; do
