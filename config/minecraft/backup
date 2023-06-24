@@ -7,4 +7,3 @@ docker exec minecraft rcon-cli save-all
 
 echo BACKING UP
 restic backup --tag minecraft-world /opt/minecraft/world
-restic backup --tag minecraft /opt/minecraft
