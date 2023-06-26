@@ -3,7 +3,6 @@ services:
   minecraft:
     image: my-minecraft:latest
     container_name: minecraft
-    restart: always
     ports:
       - "25565:25565"
     volumes:
@@ -15,7 +14,7 @@ services:
       INIT_MEMORY: "2G"
       MAX_MEMORY: "8G"
       FABRIC_VERSION: "0.14.21"
-      PACKWIZ_URL: "https://raw.githubusercontent.com/GregRos/minecraft-perdido-modpack/master/pack.toml"
+      PACKWIZ_URL: "https://xyz.gregros.dev/minecraft/perdido-modpack/pack.toml"
       DATAPACKS: >
         https://www.stardustlabs.net/s/Terralith_120_v240.zip
 

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -ex
+echo PRUNING FACTORIO
+
+restic forget --tag factorio \
+              --keep-last 5 \
+              --keep-within-hourly 1d \
+              --keep-within-daily 7d \
+              --keep-within-weekly 30d \
+              --keep-within-monthly 1y \
+              --keep-within-yearly 100y
+
+restic forget --tag factorio-world \
+              --keep-last 5 \
+              --keep-within-hourly 1d \
+              --keep-within-daily 7d \
+              --keep-within-weekly 30d \
+              --keep-within-monthly 1y \
+              --keep-within-yearly 100y
+

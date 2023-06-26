@@ -5,6 +5,7 @@ services:
     container_name: factorio
     restart: always
     environment:
+      LOAD_LATEST_SAVE: "false"
       SAVE_NAME: "main"
     volumes:
        - /opt/factorio:/factorio

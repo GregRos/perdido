@@ -1,5 +1,4 @@
 #!/bin/bash
-
+set -ex
 cd /opt/rcon
-./rcon -a localhost:27015 -p "$(cat /opt/factorio/config/rconpw)" '/c game.save("main")'
-
+./rcon -a localhost:27015 -p "$(cat /opt/factorio/config/rconpw)" '/c game.server_save("main")'
