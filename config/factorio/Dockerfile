@@ -1,12 +1,16 @@
 FROM factoriotools/factorio:1.1.80
+ARG USERNAME
+ARG TOKEN
+ENV FACTORIO_USERNAME=$USERNAME
+ENV FACTORIO_TOKEN=$TOKEN
 RUN wget https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz
 RUN mkdir -p /opt/rcon
 RUN tar -xzf rcon-0.10.3-amd64_linux.tar.gz \
     && mv rcon-0.10.3-amd64_linux/* /opt/rcon/
 RUN rm -rf rcon-0.10.3-amd64_linux.tar.gz rcon-0.10.3-amd64_linux
-
 RUN ln -sf /usr/share/zoneinfo/Israel /etc/localtime
+RUN apk add fish curl nano
 COPY ./*.json ./rconpw /opt/factorio/config/
-COPY ./save-game /bin/
-RUN chmod +x /bin/save-game
-
+COPY ./save-game ./write-user-token /bin/
+RUN chmod +x /bin/save-game /bin/write-user-token
+RUN python3 -m pip install --upgrade pip

@@ -1,9 +1,13 @@
 set -ex
-
+source ./secrets/factorio.bash
 config=$PWD/config/factorio
 cd $config
+
 echo BUILDING THE DOCKER IMAGE
-docker build -t my-factorio .
+docker build \
+  --build-arg USERNAME=$FACTORIO_USERNAME \
+  --build-arg TOKEN=$FACTORIO_TOKEN \
+  -t my-factorio .
 echo DOING THE DOCKER COMPOSE
 docker-compose down || true
 docker-compose up -d

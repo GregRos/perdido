@@ -1,5 +1,6 @@
 # Quick shortcuts for relevant commands via SSH
 if status is-interactive
+    set -gx PATH $PATH:/home/gr/.local/bin
     function pd.tail -a file lines -d "tails a file"
         set -q lines[1]; or set lines 1000
         sudo tail -f -n $lines $file

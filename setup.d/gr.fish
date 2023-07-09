@@ -4,3 +4,6 @@ sudo curl -o /usr/share/fish/vendor_completions.d/docker-compose.fish https://ra
 omf install bira
 omf theme bira
 fish_update_completions
+ln -sf ./secrets/profile.bash ~/.profile
+echo "bass source /opt/perdido/secrets/factorio.bash
+" > ~/.config/fish/conf.d/z.factorio.fish
