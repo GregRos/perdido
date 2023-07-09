@@ -16,12 +16,19 @@ echo "#!/bin/bash
 minecraft-sync
 minecraft-redeploy
 " > /bin/minecraft-update
-for command in minecraft-sync minecraft-redeploy minecraft-update; do
+
+rm -f /bin/minecraft-down || true
+echo "#!/bin/bash
+sudo -u docker /bin/bash /opt/perdido/shell/minecraft-down
+" > /bin/minecraft-down
+
+for command in minecraft-sync minecraft-redeploy minecraft-update minecraft-down; do
   chown minecraft-modpack:minecraft-modpack /bin/$command
   chmod 750 /bin/$command
 done
 echo '
   %minecraft-modpack ALL=(minecraft-modpack) NOPASSWD: /bin/bash /opt/perdido/shell/minecraft-sync
+  %minecraft-modpack ALL=(docker) NOPASSWD: /bin/bash /opt/perdido/shell/minecraft-down
   %minecraft-modpack ALL=(docker) NOPASSWD: /bin/bash /opt/perdido/shell/minecraft-redeploy
 ' | sudo tee /etc/sudoers.d/minecraft
 

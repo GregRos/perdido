@@ -2,7 +2,7 @@
 set -ex
 echo PRUNING MINECRAFT
 restic forget --tag minecraft-world \
-              --keep-last 5 \
+              --keep-last 15 \
               --keep-within-hourly 1d \
               --keep-within-daily 7d \
               --keep-within-weekly 30d \
