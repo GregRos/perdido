@@ -9,8 +9,9 @@ RUN tar -xzf rcon-0.10.3-amd64_linux.tar.gz \
     && mv rcon-0.10.3-amd64_linux/* /opt/rcon/
 RUN rm -rf rcon-0.10.3-amd64_linux.tar.gz rcon-0.10.3-amd64_linux
 RUN ln -sf /usr/share/zoneinfo/Israel /etc/localtime
-RUN apk add fish curl nano
+RUN apk add fish curl nano python3 py3-pip
 COPY ./*.json ./rconpw /opt/factorio/config/
 COPY ./save-game ./write-user-token /bin/
 RUN chmod +x /bin/save-game /bin/write-user-token
-RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install fac-cli
+COPY ./fac.config.ini /root/.config/fac/config.ini
