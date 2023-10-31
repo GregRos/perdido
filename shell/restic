@@ -1,5 +1,4 @@
 #!/bin/bash
 export RESTIC_PASSWORD="password"
 export RESTIC_REPOSITORY="/data/restic"
-export DEBUG_LOG="/var/log/restic.log"
 /opt/restic $@

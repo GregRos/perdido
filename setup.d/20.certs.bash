@@ -8,6 +8,7 @@ domains=(
   perdido.bond gregros.dev
   $(echo {discovery,files,stream,jellyfin,rutorrent,logs,movies,shows,jackett,prowlarr}.perdido.bond)
   xyz.gregros.dev
+  safr.gregros.dev
 )
 read -p "Generate new certificate?  [all/yes/No]" -n 1 -r
 firstReply=$REPLY
@@ -39,5 +40,5 @@ mkdir -p /etc/cron.d
 rm -f /etc/cron.d/renew-certificates || true
 cp "$(realpath ./config/nginx/renew.cronjob)" /etc/cron.d/renew-certificates
 chown root:root /etc/cron.d/renew-certificates
-chown root:cert_group /etc/letsencrypt{,**/*,*}
+chown nginx:cert_group /etc/letsencrypt{,**/*,*}
 chmod 750 /etc/letsencrypt{,**/*,*}

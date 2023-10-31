@@ -26,7 +26,8 @@ ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/
 
 echo FIXING PERMISSIONS
 chown -R jellyfin:torrenting /etc/jellyfin /var/jellyfin
-
+cp "$(realpath ./config/jellyfin/restart.cronjob)" /etc/cron.d/restart-jellyfin
+chown root:root /etc/cron.d/restart-jellyfin
 echo RESTARTING SERVICE
 systemctl daemon-reload
 systemctl enable jellyfin.service

@@ -17,6 +17,10 @@ ufw allow 45001
 ## SMB (Windows file sharing)
 ufw allow 443
 
+## OPENVPN
+
+
+
 echo OPENING ASSIGNABLE PORTS
 
 #

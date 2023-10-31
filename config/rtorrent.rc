@@ -26,13 +26,14 @@ protocol.pex.set = yes
 trackers.use_udp.set = yes
 
 ## Peer settings
-throttle.max_uploads.set = 100
-throttle.max_uploads.global.set = 250
-
+throttle.max_uploads.set = 40
+throttle.max_uploads.global.set = 70
+throttle.global_down.max_rate.set_kb = 25000
+throttle.global_up.max_rate.set_kb = 15000
 throttle.min_peers.normal.set = 20
-throttle.max_peers.normal.set = 60
+throttle.max_peers.normal.set = 50
 throttle.min_peers.seed.set = 30
-throttle.max_peers.seed.set = 80
+throttle.max_peers.seed.set = 50
 trackers.numwant.set = 80
 
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
@@ -42,9 +43,9 @@ protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 ## Limits for file handle resources, this is optimized for
 ## an `ulimit` of 1024 (a common default). You MUST leave
 ## a ceiling of handles reserved for rTorrent's internal needs!
-network.http.max_open.set = 50
+network.http.max_open.set = 44
 network.max_open_files.set = 600
-network.max_open_sockets.set = 300
+network.max_open_sockets.set = 150
 
 
 ## Memory resource usage (increase if you have a large number of items loaded,
