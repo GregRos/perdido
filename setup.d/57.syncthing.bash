@@ -7,6 +7,9 @@ sv_disco=v1.18.6
 version=syncthing-linux-amd64-$sv
 version_disco=stdiscosrv-linux-amd64-$sv_disco
 
+# RUN ONCE ONLY:
+# echo "fs.inotify.max_user_watches=204800" | sudo tee -a /etc/sysctl.conf
+
 ufw allow 22000
 systemctl stop $dest || true
 systemctl stop $dest_disco || true

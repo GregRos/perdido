@@ -8,18 +8,10 @@ chown -R search:search /var/lib/prowlarr
 chown -R nginx:torrenting /var/www/perdido.bond/rutorrent
 chown -R search:search /opt/{sonarr,radarr,prowlarr,jackett} || true
 chown -R syncthing:syncthing /opt/syncthing{,-discovery}
-
+chown -R search:torrenting /data/search-library
 echo CHOWN ALL CERTS TO NGINX
 
-for cur_cert in /etc/letsencrypt/live/{*.,}{perdido.bond,gregros.dev}; do
-  chown -R nginx:cert_group $cur_cert;
-  chown -R nginx:cert_group "$(realpath $cur_cert)"
-done
-for cur_cert in /etc/letsencrypt/archive/{*.,}{perdido.bond,gregros.dev}; do
-  chown -R nginx:cert_group $cur_cert;
-  chown -R nginx:cert_group "$(realpath $cur_cert)"
-done
-
+bash ./_cert-permissions.bash
 chmod 775 /data
 echo CHOWN ALL TO RTORRENT
 shopt -s extglob

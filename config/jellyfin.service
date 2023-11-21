@@ -6,6 +6,7 @@ After = network.target
 User=jellyfin
 Group=torrenting
 Type = simple
+Nice = -5
 EnvironmentFile = /etc/jellyfin/default
 User = jellyfin
 ExecStart = /usr/bin/jellyfin ${JELLYFIN_WEB_OPT} ${JELLYFIN_RESTART_OPT} ${JELLYFIN_FFMPEG_OPT} ${JELLYFIN_SERVICE_OPT} ${JELLYFIN_NOWEBAPP_OPT}

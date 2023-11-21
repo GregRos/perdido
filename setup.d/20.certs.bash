@@ -7,13 +7,13 @@ apt-get install -y --no-install-recommends certbot
 domains=(
   perdido.bond gregros.dev
   $(echo {discovery,files,stream,jellyfin,rutorrent,logs,movies,shows,jackett,prowlarr}.perdido.bond)
-  xyz.gregros.dev
-  safr.gregros.dev
+  $(echo {xyz,safr,world.safr,game.safr}.gregros.dev)
 )
 read -p "Generate new certificate?  [all/yes/No]" -n 1 -r
 firstReply=$REPLY
+stopped_nginx=false
 if [[ "$firstReply" =~ [YyAa] ]]; then
-  systemctl stop nginx || true
+  stopped_nginx=$(systemctl stop nginx && echo true || echo false)
   for domain in ${domains[*]}; do
     cont=1
     if ! [[ "$firstReply" =~ [Aa] ]]; then
@@ -32,13 +32,12 @@ if [[ "$firstReply" =~ [YyAa] ]]; then
   done
 fi
 
-wait
-
-
 echo ADDING CERTIFICATE RENEW CRONJOB
 mkdir -p /etc/cron.d
 rm -f /etc/cron.d/renew-certificates || true
 cp "$(realpath ./config/nginx/renew.cronjob)" /etc/cron.d/renew-certificates
 chown root:root /etc/cron.d/renew-certificates
-chown nginx:cert_group /etc/letsencrypt{,**/*,*}
-chmod 750 /etc/letsencrypt{,**/*,*}
+bash ./_cert-permissions.bash
+if [[ "$stopped_nginx" == "true" ]]; then
+  systemctl start nginx
+fi

@@ -10,6 +10,7 @@ Group=torrenting
 ExecStartPre=-/bin/rm -f /var/rtorrent/session/rtorrent.lock
 ExecStart=/usr/bin/rtorrent -o import=/etc/rtorrent/rtorrent.rc
 Restart=on-failure
+Nice=10
 RestartSec=3
 
 [Install]

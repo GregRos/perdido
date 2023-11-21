@@ -10,6 +10,6 @@ KillMode=process
 ExecStart=/opt/sonarr/Sonarr.exe
 Restart=on-failure
 RestartSec=3
-
+Nice=0
 [Install]
 WantedBy=multi-user.target

@@ -10,6 +10,7 @@ KillMode=process
 ExecStart=/opt/jackett/jackett --NoRestart
 Restart=on-failure
 RestartSec=3
+Nice=10
 
 [Install]
 WantedBy=multi-user.target

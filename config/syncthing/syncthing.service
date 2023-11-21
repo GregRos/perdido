@@ -6,6 +6,7 @@ After=network.target
 WorkingDirectory=/etc/syncthing
 User=syncthing
 Group=syncthing
+Nice=5
 Type=simple
 KillMode=process
 ExecStart=/opt/syncthing/syncthing --config /etc/syncthing --data /data/syncthing
