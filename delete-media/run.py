@@ -25,20 +25,8 @@ def get_library_roots(media: Path):
     lib_roots = {root for root in library_roots if not media.is_relative_to(root)}
     return lib_roots
 
-joined = """
-shows/Overlord [tmdbid-294002]
-shows/Moon Knight [tmdbid-368611]
-shows/The Wheel of Time [tmdbid-355730] 
-shows/Breaking Bad [tmdbid-81189]
-shows/Dr. Death [tmdbid-371929]
-movies/Alita Battle Angel (2019) [tmdbid-399579]
-movies/Annihilation (2018) 
-movies/Home Alone (1990) [tmdbid-771]
-""".split("\n")
-
-completed = [Path(f"/data/search-library/{x}") for x in joined if x]
 args = cli.parse_args()
-medias = set(completed)
+medias = set(args.media)
 in_type = args.in_type
 types = {in_type} if in_type != "infer" else {
     infer_type(media) for media in medias
