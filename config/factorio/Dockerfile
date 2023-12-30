@@ -1,4 +1,4 @@
-FROM factoriotools/factorio:1.1.87
+FROM factoriotools/factorio:1.1.100
 ARG USERNAME
 ARG TOKEN
 ENV FACTORIO_USERNAME=$USERNAME

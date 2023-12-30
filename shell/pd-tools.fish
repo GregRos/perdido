@@ -1,6 +1,5 @@
 # Quick shortcuts for relevant commands via SSH
 if status is-interactive
-    set -gx PATH $PATH:/home/gr/.local/bin
     function pd.tail -a file lines -d "tails a file"
         set -q lines[1]; or set lines 1000
         sudo tail -f -n $lines $file
@@ -71,11 +70,13 @@ if status is-interactive
         pd.def.tail rutorrent /var/rutorrent/rutorrent.log
         pd.def.tail jellyfin /var/jellyfin/log/log_(date +%Y%m%d).log
         pd.def.tail filebrowser /var/filebrowser/filebrowser.log
+        pd.def.tail transmission /var/log/transmission/transmission.log
         # Sweeper
         pd.def.tail sweeper /var/sweeper/logs/sweeper.log
     end
     begin
-        function pd.def.service -a name -d "Defines a command to get info about a service"
+        function pd.def.service -a name -a code -d "Defines a command to get info about a service"
+            set -q code; or set code $name
             if not pd.svc.exists $name
                 echo Invalid service $name
                 return 1
@@ -85,17 +86,20 @@ if status is-interactive
             # pd.$name.jrnl
             # pd.$name.restart
             echo "
-             function pd.$name.status -d 'Gets service status for $name'
+             function pd.$code.status -d 'Gets service status for $name'
                 pd.svc.status $name
             end
-            function pd.$name.jrnl -a lines -d 'Gets journal for $name'
+            function pd.$code.jrnl -a lines -d 'Gets journal for $name'
                 pd.svc.journal $name \$lines
             end
-            function pd.$name.restart -d 'Restarts the $name service.'
+            function pd.$code.restart -d 'Restarts the $name service.'
                 pd.svc.restart $name
             end
-            function pd.$name.stop -d 'Stops the $name service.'
+            function pd.$code.stop -d 'Stops the $name service.'
                 pd.svc.stop $name
+            end
+            function pd.$code.start -d 'Starts the $name service.'
+                pd.svc.start $name
             end
             " | source
 
@@ -115,5 +119,6 @@ if status is-interactive
         pd.def.service radarr
         pd.def.service jackett
         pd.def.service prowlarr
+        pd.def.service transmission-daemon transmission
     end
 end

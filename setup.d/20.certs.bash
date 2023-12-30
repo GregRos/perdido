@@ -6,7 +6,7 @@ apt-get install -y --no-install-recommends certbot
 # can be skipped if cert is okay
 domains=(
   perdido.bond gregros.dev
-  $(echo {discovery,files,stream,jellyfin,rutorrent,logs,movies,shows,jackett,prowlarr}.perdido.bond)
+  $(echo {discovery,files,stream,jellyfin,rutorrent,logs,torrents,movies,shows,jackett,prowlarr}.perdido.bond)
   $(echo {xyz,safr,world.safr,game.safr}.gregros.dev)
 )
 read -p "Generate new certificate?  [all/yes/No]" -n 1 -r

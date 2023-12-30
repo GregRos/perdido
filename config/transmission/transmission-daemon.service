@@ -1,0 +1,15 @@
+[Unit]
+Description=Transmission BitTorrent Daemon
+After=network.target
+
+[Service]
+Type=notify
+User=rtorrent
+Group=torrenting
+ExecStart=/usr/bin/transmission-daemon -f --log-info -g /var/lib/transmission-daemon --logfile /var/log/transmission.log
+ExecStop=/bin/kill -s STOP $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

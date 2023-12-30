@@ -21,7 +21,7 @@ network.port_range.set = 45001-45001
 network.port_random.set = no
 
 ## Changed for public trackers
-dht.mode.set = auto
+dht.mode.set = on
 protocol.pex.set = yes
 trackers.use_udp.set = yes
 
