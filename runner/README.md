@@ -1,2 +1,2 @@
 # Runs bash setup files
-Runs the files at [a](../setup.d) in order, monitoring their execution and logging results.
+Runs the files in the [setup.d](../setup.d) folder in order, possibly filtered, and monitors execution.
