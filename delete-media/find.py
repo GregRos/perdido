@@ -13,7 +13,7 @@ def _get_paths(media: Path):
     if media.is_file():
         return [media]
     else:
-        return [path for path in media.rglob("*") if path.is_file()]
+        return [path.absolute() for path in media.rglob("*") if path.is_file()]
 
 
 def get_child_file_inodes(media: Path):
@@ -54,7 +54,6 @@ def _find_by_inodes(inodes: set[int], parents: set[Path]):
 
 
 def find_samefiles(medias: set[Path], targets: set[Path]):
-    print(medias)
     all_inodes = [get_child_file_inodes(media) for media in medias]
     inodes_bi = bidict()
     for inodes in all_inodes:
