@@ -25,8 +25,15 @@ def get_library_roots(media: Path):
     lib_roots = {root for root in library_roots if not media.is_relative_to(root)}
     return lib_roots
 
+
 args = cli.parse_args()
 medias = set(args.media)
+for media in medias:
+    if media.is_dir() and not list(media.iterdir()):
+        media.rmdir()
+        print(f"Removed empty directory {media}")
+        exit(0)
+
 in_type = args.in_type
 types = {in_type} if in_type != "infer" else {
     infer_type(media) for media in medias
@@ -37,14 +44,17 @@ targets = {root / f"{type}s" for root in roots for type in types} | {"/data/down
 samefiles = find_samefiles(medias, targets)
 print(f"Found {len(samefiles)} samefiles")
 for samefile in samefiles:
-    print(samefile,"\n")
+    print(samefile, "\n")
 yesNo = input("Delete? [y/N] ")
 if yesNo != "y":
     print("Aborting")
     exit(1)
 
-
-
 for samefile in find_samefiles(medias, targets):
     for file in samefile.all():
+        parent = file.parent
         file.unlink()
+        # get rid of empty directories
+        if not list(parent.iterdir()):
+            parent.rmdir()
+
