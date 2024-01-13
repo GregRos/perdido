@@ -1,0 +1,15 @@
+[Unit]
+Description=SABnzbd Daemon
+After=network.target
+
+[Service]
+User=rtorrent
+Group=torrenting
+Type=simple
+KillMode=mixed
+ExecStart=python3.9 /opt/sabnzbd/SABnzbd.py --server 127.0.0.1:8080 --browser 0  -f /etc/sabnzbd/sabnzbd.ini
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
