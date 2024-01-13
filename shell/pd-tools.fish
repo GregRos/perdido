@@ -21,10 +21,13 @@ if status is-interactive
         sudo systemctl restart $service
     end
     function pd.nginx.reload -d "Refreshes nginx"
-        sudo nginx -t && nginx -s reload
+        sudo systemctl start nginx && nginx -t && sudo nginx -s reload
     end
     function pd.svc.reload -d "Reloads the systemd daemon"
         sudo systemctl daemon-reload
+    end
+    function pd.nginx.stop -d "Stops nginx"
+        sudo nginx -s stop
     end
     function pd.svc.journal -a name lines -d "Reads the journal entries for a systemd service"
         set -q lines[1]; or set lines 1000
@@ -35,6 +38,9 @@ if status is-interactive
     end
     function pd.sweep -d "Calls a manual sweep of target root"
         sudo -u rtorrent /opt/perdido/commands/sweeper $argv
+    end
+    function pd.erase -d "Erases all hardlinks of a file in libraries etc"
+        /opt/perdido/commands/delete-media $argv
     end
     function pd.fix.owners -d "Fixes owners for all known folders"
         pd.setup run fix-permissions
@@ -115,10 +121,12 @@ if status is-interactive
         pd.def.service syncthing
         pd.def.service iperf
         pd.def.service smbd
+        pd.def.service vsftpd
         pd.def.service sonarr
         pd.def.service radarr
         pd.def.service jackett
         pd.def.service prowlarr
+        pd.def.service php7.4-fpm
         pd.def.service transmission-daemon transmission
     end
 end
