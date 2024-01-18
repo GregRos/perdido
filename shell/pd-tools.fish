@@ -21,7 +21,7 @@ if status is-interactive
         sudo systemctl restart $service
     end
     function pd.nginx.reload -d "Refreshes nginx"
-        sudo systemctl start nginx && nginx -t && sudo nginx -s reload
+        sudo systemctl start nginx && sudo nginx -t && sudo nginx -s reload
     end
     function pd.svc.reload -d "Reloads the systemd daemon"
         sudo systemctl daemon-reload
