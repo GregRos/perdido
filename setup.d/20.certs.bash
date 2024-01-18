@@ -8,6 +8,7 @@ domains=(
   perdido.bond gregros.dev
   $(echo {discovery,files,stream,sabnzbd,jellyfin,rutorrent,logs,torrents,movies,shows,jackett,prowlarr}.perdido.bond)
   $(echo {xyz,safr,world.safr,game.safr}.gregros.dev)
+  $(echo gregros.me)
 )
 read -p "Generate new certificate?  [all/yes/No]" -n 1 -r
 firstReply=$REPLY

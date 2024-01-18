@@ -29,6 +29,11 @@ if status is-interactive
     function pd.nginx.stop -d "Stops nginx"
         sudo nginx -s stop
     end
+    function pd.certbot.renew -a domain -d "Renews a certbot certificate"
+        sudo systemctl stop nginx || true
+        sudo certbot certonly --standalone --preferred-challenges http -d $domain
+        sudo systemctl start nginx || true
+    end
     function pd.svc.journal -a name lines -d "Reads the journal entries for a systemd service"
         set -q lines[1]; or set lines 1000
         sudo journalctl -u $name -n $lines
