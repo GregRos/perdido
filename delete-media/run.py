@@ -5,10 +5,7 @@ from find import find_samefiles
 from cli import cli
 from consts import library_groups
 
-library_roots = [
-    Path("/data/library"),
-    Path("/data/search-library")
-]
+library_roots = [Path("/data/library"), Path("/data/search-library")]
 
 
 def infer_type(media: Path):
@@ -35,20 +32,17 @@ for media in medias:
         exit(0)
 
 in_type = args.in_type
-types = {in_type} if in_type != "infer" else {
-    infer_type(media) for media in medias
-}
+types = {in_type} if in_type != "infer" else {infer_type(media) for media in medias}
 roots = {root for media in medias for root in get_library_roots(media)}
 types = library_groups if "all" in types else types
-targets = {root / f"{type}s" for root in roots for type in types} | {"/data/downloads/done"}
+targets = {root / f"{type}s" for root in roots for type in types} | {
+    "/data/downloads/done"
+}
 samefiles = find_samefiles(medias, targets)
 print(f"Found {len(samefiles)} samefiles")
 for samefile in samefiles:
     print(samefile, "\n")
-yesNo = input("Delete? [y/N] ")
-if yesNo != "y":
-    print("Aborting")
-    exit(1)
+
 
 for samefile in find_samefiles(medias, targets):
     for file in samefile.all():
@@ -57,4 +51,3 @@ for samefile in find_samefiles(medias, targets):
         # get rid of empty directories
         if not list(parent.iterdir()):
             parent.rmdir()
-

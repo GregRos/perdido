@@ -81,13 +81,15 @@ if status is-interactive
         pd.def.tail rutorrent /var/rutorrent/rutorrent.log
         pd.def.tail jellyfin /var/jellyfin/log/log_(date +%Y%m%d).log
         pd.def.tail filebrowser /var/filebrowser/filebrowser.log
-        pd.def.tail transmission /var/log/transmission/transmission.log
         # Sweeper
         pd.def.tail sweeper /var/sweeper/logs/sweeper.log
     end
     begin
         function pd.def.service -a name -a code -d "Defines a command to get info about a service"
-            set -q code; or set code $name
+            if test -z $code
+                set code $name
+            end
+            echo Defining $name as $code
             if not pd.svc.exists $name
                 echo Invalid service $name
                 return 1
@@ -121,17 +123,16 @@ if status is-interactive
         pd.def.service rtorrent
         pd.def.service fail2ban
         pd.def.service filebrowser
-        pd.def.service php7.4-fpm
+        pd.def.service php7.4-fpm php
         pd.def.service log-viewer
         pd.def.service syncthing
-        pd.def.service iperf
         pd.def.service smbd
         pd.def.service vsftpd
         pd.def.service sonarr
         pd.def.service radarr
         pd.def.service jackett
         pd.def.service prowlarr
-        pd.def.service php7.4-fpm
-        pd.def.service transmission-daemon transmission
+        pd.def.service sabnzbd
+        pd.def.service transmission-daemon transmission 
     end
 end

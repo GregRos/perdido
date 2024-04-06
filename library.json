@@ -1,0 +1,349 @@
+{
+    "name": "setup.d",
+    "roots": [
+        {
+            "path": "setup.d\\43.sonarr.bash",
+            "stat": {
+                "mtime": 1683654306.7168646,
+                "size": 472,
+                "inode": 5910974513281614
+            }
+        },
+        {
+            "path": "setup.d\\32.transmission.bash",
+            "stat": {
+                "mtime": 1703860290.1670578,
+                "size": 1151,
+                "inode": 1688849860923949
+            }
+        },
+        {
+            "path": "setup.d\\30.libraries.bash",
+            "stat": {
+                "mtime": 1705010155.8460212,
+                "size": 226,
+                "inode": 281474976929759
+            }
+        },
+        {
+            "path": "setup.d\\50.ftp.bash",
+            "stat": {
+                "mtime": 1668972871.059042,
+                "size": 810,
+                "inode": 281474977032843
+            }
+        },
+        {
+            "path": "setup.d\\23.nginx.bash",
+            "stat": {
+                "mtime": 1668972925.450276,
+                "size": 1540,
+                "inode": 281474976959613
+            }
+        },
+        {
+            "path": "setup.d\\20.certs.bash",
+            "stat": {
+                "mtime": 1705593441.2514393,
+                "size": 1352,
+                "inode": 281474976958650
+            }
+        },
+        {
+            "path": "setup.d\\38.sweeper.bash",
+            "stat": {
+                "mtime": 1666126767.5825508,
+                "size": 454,
+                "inode": 562949953647406
+            }
+        },
+        {
+            "path": "setup.d\\27.nginx-brotli.bash",
+            "stat": {
+                "mtime": 1666126767.9726267,
+                "size": 4287,
+                "inode": 562949953647367
+            }
+        },
+        {
+            "path": "setup.d\\00.packages.bash",
+            "stat": {
+                "mtime": 1705234938.0611544,
+                "size": 1024,
+                "inode": 562949953644124
+            }
+        },
+        {
+            "path": "setup.d\\64.iperf-cert.bash",
+            "stat": {
+                "mtime": 1666126767.8502743,
+                "size": 698,
+                "inode": 281474976930540
+            }
+        },
+        {
+            "path": "setup.d\\97.fix-permissions.bash",
+            "stat": {
+                "mtime": 1700145444.776656,
+                "size": 1064,
+                "inode": 281474976959073
+            }
+        },
+        {
+            "path": "setup.d\\40.streaming.bash",
+            "stat": {
+                "mtime": 1698609970.7313612,
+                "size": 1265,
+                "inode": 562949953646581
+            }
+        },
+        {
+            "path": "setup.d\\57.syncthing.bash",
+            "stat": {
+                "mtime": 1699993706.741532,
+                "size": 1419,
+                "inode": 562949953647667
+            }
+        },
+        {
+            "path": "setup.d\\53.log-viewer.bash",
+            "stat": {
+                "mtime": 1666126767.8234863,
+                "size": 749,
+                "inode": 562949953642234
+            }
+        },
+        {
+            "path": "setup.d\\34.filebot.bash",
+            "stat": {
+                "mtime": 1666126767.55973,
+                "size": 459,
+                "inode": 281474976930362
+            }
+        },
+        {
+            "path": "setup.d\\75.restic.bash",
+            "stat": {
+                "mtime": 1686782280.7227652,
+                "size": 466,
+                "inode": 4785074605008297
+            }
+        },
+        {
+            "path": "setup.d\\65.iperf.bash",
+            "stat": {
+                "mtime": 1666126767.5342896,
+                "size": 308,
+                "inode": 562949953642723
+            }
+        },
+        {
+            "path": "setup.d\\85.minecraft.bash",
+            "stat": {
+                "mtime": 1687809271.2785988,
+                "size": 1745,
+                "inode": 3659174699918470
+            }
+        },
+        {
+            "path": "setup.d\\02.ufw.bash",
+            "stat": {
+                "mtime": 1666126767.3767023,
+                "size": 81,
+                "inode": 562949953642117
+            }
+        },
+        {
+            "path": "setup.d\\31.rtorrent.bash",
+            "stat": {
+                "mtime": 1666126767.6534128,
+                "size": 797,
+                "inode": 281474976942725
+            }
+        },
+        {
+            "path": "setup.d\\08.av.bash",
+            "stat": {
+                "mtime": 1666126767.3255732,
+                "size": 159,
+                "inode": 281474976941978
+            }
+        },
+        {
+            "path": "setup.d\\52.samba.bash",
+            "stat": {
+                "mtime": 1666126767.5130732,
+                "size": 149,
+                "inode": 281474976924602
+            }
+        },
+        {
+            "path": "setup.d\\48.prowlarr.bash",
+            "stat": {
+                "mtime": 1683659813.6411061,
+                "size": 484,
+                "inode": 22517998136891535
+            }
+        },
+        {
+            "path": "setup.d\\21.htpasswd.bash",
+            "stat": {
+                "mtime": 1666126767.6289034,
+                "size": 409,
+                "inode": 281474976936019
+            }
+        },
+        {
+            "path": "setup.d\\62.openvpn.bash",
+            "stat": {
+                "mtime": 1695568211.7417207,
+                "size": 609,
+                "inode": 12384898975328750
+            }
+        },
+        {
+            "path": "setup.d\\47.jackett.bash",
+            "stat": {
+                "mtime": 1683658023.227638,
+                "size": 400,
+                "inode": 24769797950962209
+            }
+        },
+        {
+            "path": "setup.d\\51.filebrowser.bash",
+            "stat": {
+                "mtime": 1666126767.941119,
+                "size": 674,
+                "inode": 562949953646211
+            }
+        },
+        {
+            "path": "setup.d\\33.rutorrent.bash",
+            "stat": {
+                "mtime": 1666126767.7281525,
+                "size": 827,
+                "inode": 562949953644568
+            }
+        },
+        {
+            "path": "setup.d\\.disabled\\03.docker.bash",
+            "stat": {
+                "mtime": 1666126767.2794154,
+                "size": 519,
+                "inode": 281474976942062
+            }
+        },
+        {
+            "path": "setup.d\\03.env.bash",
+            "stat": {
+                "mtime": 1686698927.2694745,
+                "size": 251,
+                "inode": 562949953646175
+            }
+        },
+        {
+            "path": "setup.d\\60.foundryvtt.bash",
+            "stat": {
+                "mtime": 1699023231.5206816,
+                "size": 939,
+                "inode": 5910974510927380
+            }
+        },
+        {
+            "path": "setup.d\\.disabled\\06.vpn.bash",
+            "stat": {
+                "mtime": 1666126767.268261,
+                "size": 1977,
+                "inode": 562949953645124
+            }
+        },
+        {
+            "path": "setup.d\\86.factorio.bash",
+            "stat": {
+                "mtime": 1688942811.7313418,
+                "size": 571,
+                "inode": 5910974511031487
+            }
+        },
+        {
+            "path": "setup.d\\45.radarr.bash",
+            "stat": {
+                "mtime": 1683655183.661742,
+                "size": 439,
+                "inode": 30399297484850293
+            }
+        },
+        {
+            "path": "setup.d\\gr.fish",
+            "stat": {
+                "mtime": 1709392652.4604173,
+                "size": 531,
+                "inode": 562949953647559
+            }
+        },
+        {
+            "path": "setup.d\\11.gr.bash",
+            "stat": {
+                "mtime": 1666126767.347451,
+                "size": 375,
+                "inode": 281474976942162
+            }
+        },
+        {
+            "path": "setup.d\\10.users.bash",
+            "stat": {
+                "mtime": 1687459167.586635,
+                "size": 1121,
+                "inode": 281474977042626
+            }
+        },
+        {
+            "path": "setup.d\\36.sabnzbd.bash",
+            "stat": {
+                "mtime": 1705168044.7478144,
+                "size": 1362,
+                "inode": 5629499538407801
+            }
+        },
+        {
+            "path": "setup.d\\81.open-ports.bash",
+            "stat": {
+                "mtime": 1695566054.3390746,
+                "size": 607,
+                "inode": 281474976936018
+            }
+        },
+        {
+            "path": "setup.d\\gr.sync-conflict-20240303-143844-XNROIIR.fish",
+            "stat": {
+                "mtime": 1688942696.6117485,
+                "size": 450,
+                "inode": 23925373020838921
+            }
+        },
+        {
+            "path": "setup.d\\.disabled\\54.filestash.bash",
+            "stat": {
+                "mtime": 1666126767.2990067,
+                "size": 273,
+                "inode": 562949953647275
+            }
+        },
+        {
+            "path": "setup.d\\28.python310.bash",
+            "stat": {
+                "mtime": 1705008599.3226156,
+                "size": 532,
+                "inode": 562949953644539
+            }
+        },
+        {
+            "path": "setup.d\\25.modsecurity.bash",
+            "stat": {
+                "mtime": 1666126767.9272275,
+                "size": 2027,
+                "inode": 281474976930772
+            }
+        }
+    ]
+}
