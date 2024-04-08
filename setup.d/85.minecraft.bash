@@ -2,6 +2,8 @@ set -ex
 
 echo SETTING UP CD
 rm -f /bin/minecraft-sync || true
+mkdir -p /opt/minecraft-perdido-modpack
+chown minecraft-modpack:minecraft-modpack /opt/minecraft-perdido-modpack
 echo "#!/bin/bash
 sudo -u minecraft-modpack /bin/bash /opt/perdido/shell/minecraft-sync
 " > /bin/minecraft-sync

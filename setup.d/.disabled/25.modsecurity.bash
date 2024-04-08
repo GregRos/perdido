@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ex
+return 0
 echo INSTALLING DEPENDENCIES
 apt-get install -y bison build-essential ca-certificates curl dh-autoreconf \
         doxygen flex gawk git iputils-ping libcurl4-gnutls-dev libexpat1-dev\

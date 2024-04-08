@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo >&2 "NOT IMPLEMENTED"
-exit 0
+
 #!/bin/bash
 
 # https://www.majlovesreg.one/tag/code/
@@ -15,7 +14,7 @@ exit 0
 # ngver=1.17.1
 
 # For passing the version via the command line (i.e.: user@server:~$ ./mkbrotli 1.17.1), use:
-ngver=$1
+ngver=$(nginx -v 2>&1 | grep -o '[0-9\.]*')
 
 # For automated detection of currently installed NGINX version (not to be used for auto-updating, see hooks in post), use:
 # ngver=$(nginx -v 2>&1 | grep -o '[0-9\.]*')

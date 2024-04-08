@@ -18,8 +18,6 @@ echo APPLYING DEFAULT SETTINGS
 mkdir -p /etc/jellyfin/config /var/jellyfin/data/data
 jellyfin_root=$(realpath ./config/jellyfin)
 ln -sf "$jellyfin_root/default" /etc/jellyfin
-cp -rf "$jellyfin_root"/config/* /etc/jellyfin/config
-cp -rf ./data/jellyfin/*.db /var/jellyfin/data/data
 
 echo ADDING SERVICE
 ln -sf "$(realpath ./config/jellyfin.service)" /lib/systemd/system/

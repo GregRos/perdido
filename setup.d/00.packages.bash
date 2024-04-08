@@ -8,7 +8,7 @@ apt-get update && apt-get upgrade -y
 apt-get install -y \
   shc \
   iperf3 fish certbot speedtest-cli gcc make g++ automake \
-  pkg-config default-jre mediainfo \
+  pkg-config default-jre mediainfo apache2-utils \
   p7zip-full unrar dirmngr rtorrent \
   php php-geoip php7.4-cli php7.4-json php7.4-curl php7.4-cgi php7.4-mbstring php7.4-fpm sox \
   ffmpeg sqlite3 python fail2ban \

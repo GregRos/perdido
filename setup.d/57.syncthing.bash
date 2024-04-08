@@ -15,8 +15,12 @@ systemctl stop $dest || true
 systemctl stop $dest_disco || true
 rm -rf /tmp/{$version,$version_disco}.tar.gz
 
-wget https://github.com/syncthing/syncthing/releases/download/$sv/$version.tar.gz -O /tmp/$version.tar.gz
-wget https://github.com/syncthing/discosrv/releases/download/$sv_disco/$version_disco.tar.gz -O /tmp/$version_disco.tar.gz
+if [ -f /tmp/$version.tar.gz ]; then
+    echo "Already downloaded $version.tar.gz"
+else
+    wget https://github.com/syncthing/syncthing/releases/download/$sv/$version.tar.gz -O /tmp/$version.tar.gz
+    wget https://github.com/syncthing/discosrv/releases/download/$sv_disco/$version_disco.tar.gz -O /tmp/$version_disco.tar.gz
+fi
 
 rm -rf /opt/{$dest,$dest_disco}
 tar --directory /tmp/ --extract --file /tmp/$version.tar.gz
@@ -26,8 +30,8 @@ mv /tmp/$version /opt/$dest
 mv /tmp/$version_disco /opt/$dest_disco
 
 cfg=$(realpath ./config/syncthing)
-ln -sf "$cfg/$dest" /etc/systemd/system/
-ln -sf "$cfg/$dest_disco" /etc/systemd/system/
+ln -sf "$cfg/$dest.service" /etc/systemd/system/
+ln -sf "$cfg/$dest_disco.service" /etc/systemd/system/
 mkdir -p /etc/{$dest,$dest_disco}
 chown -R syncthing:syncthing /etc/{$dest,$dest_disco} /opt/{$dest,$dest_disco}
 chmod -R 770 /etc/{$dest,$dest_disco} /opt/{$dest,$dest_disco}

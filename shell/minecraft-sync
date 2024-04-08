@@ -3,7 +3,7 @@ set -ex
 echo YOU ARE $(id -un)
 echo UPDATING MODPACK
 name=minecraft-perdido-modpack
-if [ ! -d /opt/$name ]; then
+if [ ! -d /opt/$name/.git ]; then
   git clone https://github.com/GregRos/$name.git /opt/$name
   cd /opt/$name
 else

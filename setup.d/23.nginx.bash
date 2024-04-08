@@ -2,6 +2,11 @@
 
 set -ex
 echo "!! NGINX SETUP IS PROBABLY INCOMPLETE !!"
+apt-get install -y --no-install-recommends \
+  nginx-core nginx-common nginx nginx-full \
+  python3-certbot-nginx apache2-utils \
+  libnginx-mod-http-dav-ext
+
 my_nginx=$(realpath "./config/nginx")
 mkdir -p /etc/nginx{,www,snippets,conf.d}
 local_nginx=/etc/nginx
@@ -23,7 +28,7 @@ ln -sf $my_nginx/snippets/*.conf $local_nginx/snippets/
 
 ln -sf $my_nginx/nginx.service /lib/systemd/system/
 ln -sf "$my_nginx/ssl-dhparams.certbot.pem" $local_nginx
-rm /etc/fail2ban/{jail.d,filter.d}/nginx-*.conf
+rm /etc/fail2ban/{jail.d,filter.d}/nginx-*.conf || true
 
 cp -f ./config/fail2ban/filter.d/nginx-*.conf /etc/fail2ban/filter.d/
 cp -f ./config/fail2ban/jail.d/nginx-*.conf /etc/fail2ban/jail.d/
@@ -34,10 +39,6 @@ random_token="$(od -vAn -N4 -tu4 < /dev/urandom | md5sum | cut -f1 -d' ')"
 sed -i "s/>>RANDOM<</$random_token/mig" $local_nginx/snippets/secret.conf
 
 echo RELOADING NGINX
-apt-get install -y --no-install-recommends \
-  nginx-core nginx-common nginx nginx-full \
-  python3-certbot-nginx apache2-utils \
-  libnginx-mod-http-dav-ext
 
 systemctl daemon-reload
 systemctl restart nginx

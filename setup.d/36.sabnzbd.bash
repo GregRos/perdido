@@ -4,9 +4,9 @@ set -ex
 systemctl stop sabnzbd.service || true
 sudo apt-get install sabnzbdplus
 mkdir -p /opt/sabnzbd /etc/sabnzbd/scripts /var/log/sabnzbd /etc/sabnzbd
+cd /opt/sabnzbd
 
 git clone https://github.com/sabnzbd/sabnzbd.git . || true
-cd /opt/sabnzbd
 
 python3.9 -m pip install --upgrade -r requirements.txt
 # parse out the username from the sabnzbd.ini file if it exists:

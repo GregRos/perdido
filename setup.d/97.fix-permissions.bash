@@ -2,7 +2,7 @@
 set -ex
 
 echo CHWON ALL TO NGINX
-chown -R nginx:nginx /etc/nginx /usr/local/owasp-modsecurity-crs /usr/share/nginx
+chown -R nginx:nginx /etc/nginx /usr/share/nginx
 chown -R nginx:nginx /var/www
 chown -R search:search /var/lib/prowlarr
 chown -R nginx:torrenting /var/www/perdido.bond/rutorrent

@@ -1,1 +1,1 @@
-set -gx PATH $PATH /opt/perdido/commands
+set -gx PATH $PATH /opt/perdido/commands /usr/sbin

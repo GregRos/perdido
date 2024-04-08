@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -ex
-
+return
 echo COPYING RTORRENTRC
 mkdir -p /etc/rtorrent
 ln -sf "$(realpath ./config/rtorrent.rc)" /etc/rtorrent/rtorrent.rc
