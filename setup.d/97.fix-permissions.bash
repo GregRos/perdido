@@ -9,6 +9,8 @@ chown -R nginx:torrenting /var/www/perdido.bond/rutorrent
 chown -R search:search /opt/{sonarr,radarr,prowlarr,jackett} || true
 chown -R syncthing:syncthing /opt/syncthing{,-discovery}
 chown -R search:torrenting /data/search-library
+chown -R minecraft:minecraft /opt/minecraft
+chown -R factorio:factorio /opt/factorio
 echo CHOWN ALL CERTS TO NGINX
 
 bash ./_cert-permissions.bash

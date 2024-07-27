@@ -5,7 +5,7 @@ apt-get install -y --no-install-recommends certbot
 # Puts certificate in /etc/letsencrypt/live
 # can be skipped if cert is okay
 domains=(
-  perdido.bond gregros.dev
+  perdido.bond gregros.dev parjs.org
   $(echo {discovery,files,stream,sabnzbd,jellyfin,rutorrent,logs,torrents,movies,shows,jackett,prowlarr}.perdido.bond)
   $(echo {xyz,safr,world.safr,game.safr}.gregros.dev)
   $(echo gregros.me)

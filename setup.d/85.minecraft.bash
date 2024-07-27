@@ -1,6 +1,8 @@
 set -ex
 
 echo SETTING UP CD
+groupadd -g 5781 minecraft || true
+useradd -u 5781 -g 5781 -s /bin/bash -m minecraft || true
 rm -f /bin/minecraft-sync || true
 mkdir -p /opt/minecraft-perdido-modpack
 chown minecraft-modpack:minecraft-modpack /opt/minecraft-perdido-modpack

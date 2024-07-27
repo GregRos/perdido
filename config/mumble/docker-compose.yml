@@ -1,20 +1,20 @@
 services:
   mumble-server:
-    image: mumblevoip/mumble-server:<tag>
-    container_name: mumble-server
-    hostname: mumble-server
+    image: mumblevoip/mumble-server:v1.5.634-0
+    container_name: mumble
+    hostname: mumble
     restart: on-failure
     ports:
       - 64738:64738
       - 64738:64738/udp
-  #       expose:
-  #           - 6502
+    #       expose:
+    #           - 6502
     volumes:
       - type: bind
-        source: /data/mumble-server
+        source: /opt/mumble/data
         target: /data
     environment:
       - MUMBLE_CONFIG_SERVER_PASSWORD=superspecialawesomegame
-      - MUMBLE_SERVER_USERNAME=recklessheroism
+      - MUMBLE_SERVER_USERNAME=greg
       - MUMBLE_SERVER_ADMIN_KEY=atroposwasneveratropos
-
+      - MUMBLE_SUPERUSER_PASSWORD=thechickensarecoming

@@ -3,6 +3,8 @@ cd /opt/perdido
 source ./secrets/factorio.bash
 config=/opt/perdido/config/factorio
 cd $config
+groupadd -g 845 factorio || true
+useradd -u 845 -g 845 -s /bin/bash -m factorio || true
 echo BUILDING THE DOCKER IMAGE
 docker build \
   --build-arg USERNAME=$FACTORIO_USERNAME \

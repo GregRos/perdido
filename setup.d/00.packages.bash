@@ -14,6 +14,6 @@ apt-get install -y \
   ffmpeg sqlite3 python fail2ban \
   libtool libfuzzy-dev ssdeep gettext liblua5.3-dev libpcre3 libpcre3-dev libxml2 libxml2-dev libyajl-dev doxygen libcurl4 libgeoip-dev libssl-dev zlib1g-dev libxslt-dev liblmdb-dev libpcre++-dev libgd-dev \
   software-properties-common ufw python3-pip unzip \
-  libmono-cil-dev mono-devel
+  libmono-cil-dev mono-devel easy-rsa
 
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7
