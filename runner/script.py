@@ -24,20 +24,18 @@ class InstallScript:
     def run(self):
         def _read(stream: IO):
             for line in stream:
-                sys.stdout.write(f"[{str(self.pos).zfill(2)} {self.name.upper()}] {line.strip()}\n")
+                sys.stdout.write(
+                    f"[{str(self.pos).zfill(2)} {self.name.upper()}] {line.strip()}\n"
+                )
 
         p = Popen(
             ["/bin/bash", str(self.path)],
             stdout=PIPE,
             stderr=STDOUT,
             shell=False,
-            encoding="utf-8"
+            encoding="utf-8",
         )
-        r_stdout = Thread(
-            target=lambda: _read(
-                p.stdout
-            )
-        )
+        r_stdout = Thread(target=lambda: _read(p.stdout))
         r_stdout.start()
         p.wait()
         if p.returncode > 0:
@@ -59,6 +57,7 @@ class ScriptDb:
 
     def __iter__(self):
         positions = sorted(self._by_pos.keys())
+        self.__hash__()
         for cur_pos in positions:
             yield self._by_pos[cur_pos]
 
@@ -67,9 +66,13 @@ class ScriptDb:
         existing_name = self._by_name.get(script.name)
 
         if existing_name:
-            raise Exception(f"Tried to register script {script}, but a script with the same name exists: {existing_name}")
+            raise Exception(
+                f"Tried to register script {script}, but a script with the same name exists: {existing_name}"
+            )
         if existing_pos:
-            raise Exception(f"Tried to register script {script}, but a script with the same pos exists: {existing_pos}")
+            raise Exception(
+                f"Tried to register script {script}, but a script with the same pos exists: {existing_pos}"
+            )
 
         self._by_pos[script.pos] = script
         self._by_name[script.name] = script
