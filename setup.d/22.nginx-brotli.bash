@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 
-#!/bin/bash
-
 # https://www.majlovesreg.one/tag/code/
 # https://www.majlovesreg.one/adding-brotli-to-a-built-nginx-instance
 # https://github.com/majal/maj-server/tree/master/nginx-modules-brotli
