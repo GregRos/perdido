@@ -1,0 +1,43 @@
+version: "3"
+services:
+  dind:
+    image: docker:27.3.1-dind-alpine3.20
+    restart: always
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    command:
+      - --storage-driver=overlay2
+      - --tls=false
+    volumes:
+      - /var/dind:/var/lib/docker
+
+  runner:
+    restart: always
+    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine3.19-v17.6.0
+    depends_on:
+      - dind
+    volumes:
+      - /etc/gitlab-runner:/etc/gitlab-runner:z
+      - /var/gitlab-runner/cache:/cache
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DOCKER_HOST=tcp://dind:2375
+
+  register-runner:
+    restart: "no"
+    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine3.19-v17.6.0
+    environment:
+      - CI_SERVER_URL=https://gitlab.perdido.bond
+    depends_on:
+      - dind
+    command:
+      - register
+      - --non-interactive
+      - --template-config=/etc/gitlab-runner-register/config.toml
+      - --url=https://gitlab.perdido.bond
+      - --token=glrt-t1_ire3KDuC_K6Nf2CQxyA7
+    volumes:
+      - /etc/gitlab-runner:/etc/gitlab-runner:z
+      - /var/dind:/var/lib/docker
+      - ./config.template.toml:/etc/gitlab-runner-register/config.toml
