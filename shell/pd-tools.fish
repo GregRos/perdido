@@ -32,6 +32,7 @@ if status is-interactive
     function pd.certbot.renew -a domain -d "Renews a certbot certificate"
         sudo systemctl stop nginx || true
         sudo certbot certonly --standalone --preferred-challenges http -d $domain
+        pd.setup run fix-permissions
         sudo systemctl start nginx || true
     end
     function pd.svc.journal -a name lines -d "Reads the journal entries for a systemd service"
