@@ -1,0 +1,10 @@
+version: "3"
+services:
+  gregros.dev:
+    image: registry.gitlab.perdido.bond/gregros.dev/gregros.dev:latest
+    container_name: gregros.dev
+    restart: always
+    ports:
+      - 3000:3000
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
