@@ -38,3 +38,9 @@ gitlab_rails['allowed_hosts'] = ['gitlab.perdido.bond', '127.0.0.1', 'localhost'
 # gitlab_rails['gitlab_kas_external_url'] = 'ws://localhost:8150/-/kubernetes-agent/'
 # gitlab_kas['listen_network'] = 'tcp'
 # gitlab_kas['listen_websocket'] = true
+
+# limit # of workers to limit memory usage
+puma['worker_processes'] = 3
+
+# limit memory usage per worker
+puma['per_worker_max_memory_mb'] = 800
