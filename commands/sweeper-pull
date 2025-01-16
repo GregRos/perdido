@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -ex
+
+cd /opt/sweeper
+git reset --hard HEAD
+git clean -f
+git pull

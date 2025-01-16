@@ -45,6 +45,13 @@ if status is-interactive
     function pd.sweep -d "Calls a manual sweep of target root"
         sudo -u rtorrent /opt/perdido/commands/sweeper $argv
     end
+    function pd.sweep.subs -d "Sweeps subtitle files"
+        chmod +x /opt/perdido/commands/sweeper-subs
+        sudo -u rtorrent /opt/perdido/commands/sweeper-subs $argv
+    end
+    function pd.sweeper.pull -d "Pulls the latest version of the sweeper"
+        sudo -u rtorrent /opt/perdido/commands/sweeper-pull
+    end
     function pd.erase -d "Erases all hardlinks of a file in libraries etc"
         /opt/perdido/commands/delete-media $argv
     end
@@ -132,6 +139,7 @@ if status is-interactive
         pd.def.service sonarr
         pd.def.service radarr
         pd.def.service jackett
+        pd.def.service bazarr
         pd.def.service prowlarr
         pd.def.service sabnzbd
         pd.def.service transmission-daemon transmission 
