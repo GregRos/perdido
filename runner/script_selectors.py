@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 
-from typing import Iterable, Callable
+from typing import Iterable, Callable, Union
 
 from script import InstallScript
 
 
-def range_selector(start: int | None, end: int | None) -> Callable[[InstallScript], bool]:
+def range_selector(
+    start: Union[int, None], end: Union[int, None]
+) -> Callable[[InstallScript], bool]:
     def rule(script: InstallScript):
+        if script.pos is None:
+            return False
         if start is not None and script.pos < start:
             return False
         if end is not None and script.pos > end:
@@ -31,7 +35,9 @@ def name_selector(name: str) -> Callable[[InstallScript], bool]:
     return rule
 
 
-def any_selector(selectors: Iterable[Callable[[InstallScript], bool]]) -> Callable[[InstallScript], bool]:
+def any_selector(
+    selectors: Iterable[Callable[[InstallScript], bool]]
+) -> Callable[[InstallScript], bool]:
     def rule(script: InstallScript):
         return bool([1 for rule in selectors if rule(script)])
 
@@ -43,7 +49,9 @@ def parse_selector(selector: str) -> Callable[[InstallScript], bool]:
         [before, after] = selector.split("-")
         # Either '-1' or '1-2':
         if not before or before.isdigit():
-            return range_selector(int(before) if before else None, int(after) if after else None)
+            return range_selector(
+                int(before) if before else None, int(after) if after else None
+            )
         else:
             # Must be a name with a '-' in it.
             return name_selector(selector)

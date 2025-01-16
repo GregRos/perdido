@@ -1,7 +1,7 @@
-
 from typing import Protocol, Callable
 
-from script import ScriptDb, InstallScript
+from script_db import ScriptDb
+from script import InstallScript
 
 
 class Command(Protocol):
@@ -25,9 +25,14 @@ class Api:
             exit(1)
         return scripts
 
+    def _test(self, rule: Callable[[InstallScript], bool]):
+        for script in self._match(rule):
+            print(str(script))
+
     def _print(self, rule: Callable[[InstallScript], bool]):
         for script in self._match(rule):
             print(str(script))
+            print(script.pretty_print())
 
     def _run(self, rule: Callable[[InstallScript], bool]):
         for script in self._match(rule):
@@ -36,13 +41,16 @@ class Api:
     def invoke(self, obj: Command):
         if obj.command == "run":
             return self._run(obj.rule)
+        elif obj.command == "print":
+            return self._print(obj.rule)
         elif obj.command == "install":
             return self._run(lambda x: True)
         elif obj.command == "test":
-            return self._print(obj.rule)
+            return self._test(obj.rule)
         elif obj.command == "list":
             return self._print(lambda x: True)
         elif obj.command == "chown":
             return self._chown()
+
         else:
             raise Exception(f"Unknown command {obj.command}.")

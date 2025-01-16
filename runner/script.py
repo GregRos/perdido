@@ -1,20 +1,38 @@
 import sys
-from os import PathLike
 from pathlib import Path
 from subprocess import Popen, PIPE, STDOUT
 from threading import Thread
-from typing import IO, Iterable, Callable
+from typing import IO, Iterable, Union
 
 
 class InstallScript:
-    pos: int
+    pos: Union[int, None]
     name: str
     path: Path
+
+    @property
+    def pos_str(self):
+        return "_" if self.pos is None else str(self.pos)
+
+    def _read_lines(self):
+        with self.path.open() as file:
+            return file.readlines()
+
+    def pretty_print(self):
+        return pretty_print_lines(self._read_lines())
 
     def __init__(self, path: Path):
         name = path.stem
         [pos, name] = name.split(".")
-        self.pos = int(pos)
+        # is pos a number?
+        if pos.isdigit():
+            self.pos = int(pos)
+        elif pos == "_":
+            # special case for scripts without a position
+            # that are executed manually
+            self.pos = None
+        else:
+            raise Exception(f"Invalid script position component: {name}")
         self.name = name
         self.path = path
 
@@ -25,7 +43,7 @@ class InstallScript:
         def _read(stream: IO):
             for line in stream:
                 sys.stdout.write(
-                    f"[{str(self.pos).zfill(2)} {self.name.upper()}] {line.strip()}\n"
+                    f"[{str(self.pos_str).zfill(2)} {self.name.upper()}] {line.strip()}\n"
                 )
 
         p = Popen(
@@ -35,7 +53,10 @@ class InstallScript:
             shell=False,
             encoding="utf-8",
         )
-        r_stdout = Thread(target=lambda: _read(p.stdout))
+        stdout = p.stdout
+        if not stdout:
+            raise Exception(f"Failed to open {self.path}")
+        r_stdout = Thread(target=lambda: _read(stdout))
         r_stdout.start()
         p.wait()
         if p.returncode > 0:
@@ -48,54 +69,7 @@ class ScriptFailedError(Exception):
         self.script = script
 
 
-class ScriptDb:
-    _by_name = dict[str, InstallScript]()
-    _by_pos = dict[int, InstallScript]()
-
-    def __init__(self, scripts: Iterable[InstallScript]):
-        self.add(*scripts)
-
-    def __iter__(self):
-        positions = sorted(self._by_pos.keys())
-        self.__hash__()
-        for cur_pos in positions:
-            yield self._by_pos[cur_pos]
-
-    def add_one(self, script: InstallScript):
-        existing_pos = self._by_pos.get(script.pos)
-        existing_name = self._by_name.get(script.name)
-
-        if existing_name:
-            raise Exception(
-                f"Tried to register script {script}, but a script with the same name exists: {existing_name}"
-            )
-        if existing_pos:
-            raise Exception(
-                f"Tried to register script {script}, but a script with the same pos exists: {existing_pos}"
-            )
-
-        self._by_pos[script.pos] = script
-        self._by_name[script.name] = script
-
-    def get_by_pos(self, pos: int):
-        return self._by_pos[pos]
-
-    def get_by_name(self, name: str):
-        return self._by_name[name]
-
-    def find_all(self, predicate: Callable[[InstallScript], bool]):
-        return filter(predicate, self)
-
-    def add(self, *scripts: InstallScript):
-        for script in scripts:
-            self.add_one(script)
-        return self
-
-
-class PerdidoScriptDb(ScriptDb):
-    def __init__(self, root: PathLike):
-        root = Path(root)
-        super().__init__(
-            [InstallScript(script) for script in root.glob("setup.d/*.bash")]
-        )
-        self._root = root
+def pretty_print_lines(lines: Iterable[str]):
+    # NNN | Line
+    lines = [f"{(i + 1):>3} | {line}" for i, line in enumerate(lines)]
+    return "".join(lines)
