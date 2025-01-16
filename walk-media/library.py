@@ -33,7 +33,7 @@ class FileInfo:
     path: Path
     stat: Stat
 
-    def __init__(self, path: Path, stat: Stat | None = None) -> None:
+    def __init__(self, path: Path, stat: Union[Stat, None] = None) -> None:
         self.path = path
         self.stat = stat or Stat.from_stat_result(path.stat())
 
