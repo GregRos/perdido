@@ -2,7 +2,7 @@ import os
 import re
 from collections import defaultdict
 from pathlib import Path
-from typing import List
+from typing import List, Union
 
 from bidict import bidict
 
@@ -16,12 +16,12 @@ def _get_paths(media: Path):
         return [path.absolute() for path in media.rglob("*") if path.is_file()]
 
 
-def get_child_file_inodes(media: Path):
-    paths = _get_paths(media)
+def get_child_file_inodes(media: Union[Path, str]):
+    paths = _get_paths(Path(media))
     return bidict({path: path.stat().st_ino for path in paths})
 
 
-def _get_find_cmd(inodes: set[int], parents: set[Path]):
+def _get_find_cmd(inodes: set[int], parents: set[Union[Path, str]]):
     if not parents:
         return ""
     if not inodes:
@@ -34,14 +34,12 @@ def _get_find_cmd(inodes: set[int], parents: set[Path]):
         return " -o ".join([get_inum(inode) for inode in inodes])
 
     conditions = get_inums(inodes)
-    format=" -printf '%i %p\\n'"
+    format = " -printf '%i %p\\n'"
     return f"find {' '.join([str(parent) for parent in parents])} \\( {conditions} \\) {format}"
 
 
-def _find_by_inodes(inodes: set[int], parents: set[Path]):
-    results_dict = defaultdict(
-        set
-    )
+def _find_by_inodes(inodes: set[int], parents: set[Union[Path, str]]):
+    results_dict = defaultdict(set)
     cmd = _get_find_cmd(inodes, parents)
     print(f"Running: {cmd}")
     results = os.popen(cmd).read().splitlines()
@@ -53,14 +51,15 @@ def _find_by_inodes(inodes: set[int], parents: set[Path]):
     return dict(results_dict)
 
 
-def find_samefiles(medias: set[Path], targets: set[Path]):
+def find_samefiles(medias: set[Union[Path, str]], targets: set[Union[Path, str]]):
     all_inodes = [get_child_file_inodes(media) for media in medias]
     inodes_bi = bidict()
     for inodes in all_inodes:
         inodes_bi.update(inodes)
     results = _find_by_inodes(set(inodes_bi.values()), targets)
     samefiles = [
-        SameFile(inodes_bi.inverse[inode], inode, results) for inode, results in results.items()
+        SameFile(inodes_bi.inverse[inode], inode, results)
+        for inode, results in results.items()
     ]
 
     return samefiles
