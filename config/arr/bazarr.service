@@ -1,0 +1,19 @@
+[Unit]
+Description=Bazarr Daemon
+After=syslog.target network.target
+
+[Service]
+User=search
+Group=torrenting
+Type=simple
+UMask=0002
+KillMode=process
+ExecStart=python3.10 /opt/bazarr/bazarr.py
+Restart=on-failure
+KillSignal=SIGINT
+TimeoutStopSec=20
+RestartSec=5
+Nice=0
+[Install]
+WantedBy=multi-user.target
+
