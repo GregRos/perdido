@@ -6,7 +6,7 @@ apt-get install -y --no-install-recommends certbot
 # can be skipped if cert is okay
 domains=(
   perdido.bond gregros.dev parjs.org
-  $(echo {discovery,files,stream,homepage,bazarr,scrutiny,sabnzbd,glances,jellyfin,rutorrent,logs,torrents,movies,shows,jackett,prowlarr,gitlab}.perdido.bond)
+  $(echo {discovery,files,stream,homepage,speed,bazarr,scrutiny,sabnzbd,glances,jellyfin,rutorrent,logs,torrents,movies,shows,jackett,prowlarr,gitlab}.perdido.bond)
   $(echo {xyz,safr,world.safr,game.safr,career}.gregros.dev)
   $(echo gregros.me)
 )
