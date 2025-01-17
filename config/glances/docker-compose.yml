@@ -1,0 +1,15 @@
+version: "3"
+services:
+  monitoring:
+    image: nicolargo/glances:latest-full
+    container_name: glances
+    pid: host
+    network_mode: host
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data:/data
+      - /var/log:/var/log
+      - ${PWD}/glances.conf:/glances/conf/glances.conf
+    environment:
+      - "GLANCES_OPT=-w -C /glances/conf/glances.conf"
