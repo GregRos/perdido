@@ -14,10 +14,10 @@
         icon: sabnzbd
         href: https://sabnzbd.perdido.bond
         description: Usenet Downloader
-        provider: sabnzbd
         widget:
           type: sabnzbd
           href: http://127.0.0.1:8089
+          key: "${HP_SABNZBD_API_KEY}"
 - managers:
     - sonarr:
         icon: sonarr
@@ -66,8 +66,15 @@
     - watchtower:
         provider: watchtower
         icon: watchtower
-        href: http://127.0.0.1:7892
+        widget:
+          type: watchtower
+          href: http://127.0.0.1:7892
+
     - gitlab:
         icon: gitlab
         provider: gitlab
-        href: http://127.0.0.1:12341
+        description: GitLab
+        href: https://gitlab.perdido.bond
+        widget:
+          type: gitlab
+          href: http://127.0.0.1:12341

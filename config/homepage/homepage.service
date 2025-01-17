@@ -7,7 +7,6 @@ User=homepage
 Group=homepage
 Nice=5
 Type=simple
-KillMode=process
 WorkingDirectory=/opt/homepage
 ExecStart=pnpm start -- -p 3050
 Restart=on-failure
