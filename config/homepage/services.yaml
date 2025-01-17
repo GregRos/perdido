@@ -1,5 +1,11 @@
-# - core:
-#     - speedtest
+- system:
+    - scrutiny:
+        icon: scrutiny
+        href: https://scrutiny.perdido.bond
+        description: Disk Health
+        widget:
+          type: scrutiny
+          url: http://localhost:8084
 - acquisition:
     - transmission:
         icon: transmission
