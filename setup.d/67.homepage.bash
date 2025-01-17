@@ -1,6 +1,6 @@
 set -ex
+
 systemctl stop homepage || true
-git config --global --add safe.directory /opt/homepage
 echo CLONING homepage
 configRoot="$PWD/config"
 secretsRoot="$PWD/secrets"
@@ -18,15 +18,16 @@ fi
 echo COPYING CONFIG
 cp -f $configRoot/homepage/{settings,services}.yaml /opt/homepage/config/
 
-echo CHOWNING
-chown -R homepage:homepage /opt/homepage
+
 
 cd /opt/homepage
 
 echo POPULATING SECRETS
 source $secretsRoot/homepage.bash
-envsubst < ./config/settings.yaml > ./config/settings.yaml
-cat ./config/settings.yaml
+cd config
+cat ./settings.yaml | envsubst | tee ./settings.yaml
+cat ./services.yaml | envsubst | tee ./services.yaml
+
 
 echo SETTINGS UP PNPM
 corepack enable pnpm
@@ -41,7 +42,8 @@ if [[ "$REPLY" =~ [Yy] ]]; then
   echo BUILDING
   pnpm build
 fi
-
+echo CHOWNING
+chown -R homepage:homepage /opt/homepage
 systemctl daemon-reload
 systemctl start homepage
 systemctl enable homepage
