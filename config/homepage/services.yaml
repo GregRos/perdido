@@ -1,0 +1,73 @@
+# - core:
+#     - speedtest
+- acquisition:
+    - transmission:
+        icon: transmission
+        href: https://torrents.perdido.bond
+        description: Torrent Downloader
+        widget:
+          type: transmission
+          href: http://localhost:9091
+          rpcUrl: /transmission/
+
+    - sabnzbd:
+        icon: sabnzbd
+        href: https://sabnzbd.perdido.bond
+        description: Usenet Downloader
+        provider: sabnzbd
+        widget:
+          type: sabnzbd
+          href: http://127.0.0.1:8089
+- managers:
+    - sonarr:
+        icon: sonarr
+        href: https://shows.perdido.bond
+        description: Shows Manager
+        provider: sonarr
+        widget:
+          type: sonarr
+          href: http://127.0.0.1:8989
+    - radarr:
+        icon: radarr
+        provider: radarr
+        href: https://movies.perdido.bond
+        description: Movies Manager
+        widget:
+          type: radarr
+          href: http://127.0.0.1:7878
+    - prowlarr:
+        icon: prowlarr
+        provider: prowlarr
+        href: https://prowlarr.perdido.bond
+        description: Indexer Manager
+        widget:
+          type: prowlarr
+          href: http://127.0.0.1:9696
+    - bazarr:
+        icon: bazarr
+        provider: bazarr
+        href: https://bazarr.perdido.bond
+        description: Subtitle Manager
+        widget:
+          type: bazarr
+          href: http://localhost:6767
+
+- streaming:
+    - jellyfin:
+        icon: jellyfin
+        href: https://jellyfin.perdido.bond
+        description: Media Server
+        provider: jellyfin
+        widget:
+          type: jellyfin
+          href: http://127.0.0.1:8096
+
+- infrastructure:
+    - watchtower:
+        provider: watchtower
+        icon: watchtower
+        href: http://127.0.0.1:7892
+    - gitlab:
+        icon: gitlab
+        provider: gitlab
+        href: http://127.0.0.1:12341

@@ -1,0 +1,18 @@
+title: Perdido
+description: HALLO WELOME TO PERDIDO
+theme: dark
+color: indigo
+language: en
+layout:
+  Media:
+    style: row
+    columns: 4
+providers:
+  sabnzbd: "${HP_SABNZBD_API_KEY}"
+  sonarr: "${HP_SONARR_API_KEY}"
+  radarr: "${HP_RADARR_API_KEY}"
+  prowlarr: "${HP_PROWLARR_API_KEY}"
+  bazarr: "${HP_BAZARR_API_KEY}"
+  jellyfin: "${HP_JELLYFIN_API_KEY}"
+  watchtower: "${HP_WATCHTOWER_API_KEY}"
+  gitlab: "${HP_GITLAB_API_KEY}"
