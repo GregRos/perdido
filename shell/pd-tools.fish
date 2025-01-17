@@ -133,6 +133,7 @@ if status is-interactive
         pd.def.service filebrowser
         pd.def.service php7.4-fpm php
         pd.def.service log-viewer
+        pd.def.service homepage
         pd.def.service syncthing
         pd.def.service smbd
         pd.def.service vsftpd
