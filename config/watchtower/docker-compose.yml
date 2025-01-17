@@ -4,7 +4,7 @@ services:
     image: containrrr/watchtower
     container_name: watchtower
     ports:
-      - 8080:7892
+      - 7892:8080
     environment:
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_CLEANUP=true
