@@ -6,6 +6,13 @@
         widget:
           type: scrutiny
           url: http://localhost:8084
+    - speedtest-tracker:
+        icon: speedtest
+        href: https://speed.perdido.bond
+        description: Speedtest Tracker
+        widget:
+          type: speedtest
+          url: http://localhost:8095
 - acquisition:
     - transmission:
         icon: transmission

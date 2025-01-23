@@ -11,5 +11,6 @@ services:
       - PGID=1000
       - APP_KEY=base64:ikmuscnwBKR3Fhnqs7sy4eHBC8IGTPCQZAN7CmOVVbI=
       - DB_CONNECTION=sqlite
+      - SPEEDTEST_SCHEDULE=6 */2 * * *
     volumes:
       - /data/speedtest-tracker:/config

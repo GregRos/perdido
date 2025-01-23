@@ -13,7 +13,7 @@ class Stat:
     inode: int
     ctime: float
 
-    def toDict(self):
+    def to_dict(self):
         return {
             "mtime": self.mtime,
             "size": self.size,
@@ -43,14 +43,14 @@ class FileInfo:
     def __eq__(self, o: object) -> bool:
         return isinstance(o, FileInfo) and self.path == o.path
 
-    def toDict(self):
+    def to_dict(self):
         return {
             "path": str(self.path),
-            "stat": self.stat.toDict(),
+            "stat": self.stat.to_dict(),
         }
 
     @staticmethod
-    def fromDict(data):
+    def from_dict(data):
         return FileInfo(Path(data["path"]), Stat.fromDict(data["stat"]))
 
 
@@ -100,11 +100,11 @@ class Library:
     def toDict(self):
         return {
             "name": self.name,
-            "files": {str(file.path): file.toDict() for file in self._files.values()},
+            "files": {str(file.path): file.to_dict() for file in self._files.values()},
         }
 
     @staticmethod
     def fromDict(data):
         lib = Library(data["name"])
-        lib.add(*(FileInfo.fromDict(file) for file in data["files"].values()))
+        lib.add(*(FileInfo.from_dict(file) for file in data["files"].values()))
         return lib

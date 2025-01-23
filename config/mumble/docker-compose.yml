@@ -2,11 +2,10 @@ services:
   mumble-server:
     image: mumblevoip/mumble-server:v1.5.634-0
     container_name: mumble
-    hostname: mumble
     restart: on-failure
     ports:
-      - 64738:64738
-      - 64738:64738/udp
+      - 27812:64738
+      - 27812:64738/udp
     #       expose:
     #           - 6502
     volumes:
